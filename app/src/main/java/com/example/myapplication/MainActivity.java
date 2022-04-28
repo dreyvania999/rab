@@ -36,22 +36,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ButtonLogin:
-                Cursor cursorLog = DB.query(DBHelper.People, null, null, null, null, null, null);
                 boolean zahod = false;
+                if (editPassword.getText().toString().equals("admin") && editLogin.getText().toString().equals("admin")) {
+                    Intent intent = new Intent(this, AdminAddOdegda.class);
+                    startActivity(intent);
+                    zahod = true;
+                }
+                Cursor cursorLog = DB.query(DBHelper.People, null, null, null, null, null, null);
+
                 if (cursorLog.moveToFirst()) {
                     int passwordIndex = cursorLog.getColumnIndex(DBHelper.Password);
                     int loginIndex = cursorLog.getColumnIndex(DBHelper.Login);
-                    int adminIndex = cursorLog.getColumnIndex(DBHelper.Password);
-                    int l = adminIndex;
                     do {
                         if (editPassword.getText().toString().equals(cursorLog.getString(passwordIndex)) && editLogin.getText().toString().equals(cursorLog.getString(loginIndex))) {
-                            if (editPassword.getText().toString().equals("admin") && editLogin.getText().toString().equals("admin")) {
-                                Intent intent = new Intent(this, AdminAddAcsesuar.class);
-                                startActivity(intent);
-                            } else {
+
                                 Intent intent1 = new Intent(this, Odegda.class);
                                 startActivity(intent1);
-                            }
+
                             zahod = true;
                             break;
                         }

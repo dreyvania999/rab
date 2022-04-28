@@ -20,8 +20,13 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String Login = "login";
     public static final String Password = "password";
 
+    public static final String NameO = "nameOdegda";
+    public static final String Prise = "prise";
 
+    public static final String Odegda = "odegda";
 
+    public static final String Korzina = "korzina";
+    public static final String KO = "keyo";
 
 
     public DBHelper(Context context) {
@@ -32,11 +37,20 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("create table " + People + "(" + KEY_ID
-                + " integer primary key," + Name + " text," + Phone + " text,"+ Birtday+ " date,"+ Pol +"  TEXT CHECK( pol IN ('М','Ж') )   NOT NULL DEFAULT 'М'," + Surname + " text," +
+                + " integer primary key," + Name + " text," + Phone + " text,"+ Birtday+ " date,"+ Surname + " text," +
                 Address + " text," + Login + " text," + Password + " text" + ")");
 
-        sqLiteDatabase.execSQL("insert into " + People + "(" +  Name + " ," + Phone + " ,"+ Birtday+ " ,"+ Pol +" ," + Surname + " ," +
-                Address + " ," + Login + " ," + Password  + ")" + " values "+"('Иванов', '+79535599079', '2003.03.03','М','Иванов','Улицаулицавобще','admin','admin');");
+        sqLiteDatabase.execSQL("create table " + Odegda + "(" + KEY_ID
+                + " integer primary key," + NameO + " text," + Prise + " real,"+  Pol +"  TEXT CHECK( pol IN ('М','Ж','Н') )   NOT NULL DEFAULT 'Н'" + ")");
+
+        sqLiteDatabase.execSQL("create table " + Korzina + "(" + KEY_ID
+                + " integer primary key," + KO + " integer NOT NULL, FOREIGN KEY (keyo) REFERENCES auth(_id)" +  ")");
+
+
+        sqLiteDatabase.execSQL("insert into " + People + "(" +  NameO + " ," + Prise + " ,"+ Pol  + ")" + " values "+"('Иванов', 1234, 'М')");
+
+        sqLiteDatabase.execSQL("insert into " + Odegda + "(" +  Name + " ," + Phone + " ,"+ Birtday+ " ,"+ Pol +" ," + Surname + " ," +
+                Address + " ," + Login + " ," + Password  + ")" + " values "+"('Иванов', '+79535599079', '2003.03.03','М','Иванов','Улицаулицавобще','admin','admin')");
 
     }
 
