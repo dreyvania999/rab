@@ -29,7 +29,7 @@ public class Odegda extends AppCompatActivity implements View.OnClickListener {
         nameodegda = findViewById(R.id.nameodegda);
         imageodegda = findViewById(R.id.imageodegda);
         cost = findViewById(R.id.cost);
-
+        sexclother = findViewById(R.id.sexclother);
         pageProfile = findViewById(R.id.pageProfile);
         pageProfile.setOnClickListener(this);
         UpdateTable();
@@ -62,7 +62,6 @@ public class Odegda extends AppCompatActivity implements View.OnClickListener {
                 TableRow.LayoutParams params = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
 
 
-
                 TextView outputID = new TextView(this);
                 params.weight = 1.0f;
                 outputID.setLayoutParams(params);
@@ -70,26 +69,26 @@ public class Odegda extends AppCompatActivity implements View.OnClickListener {
                 outputID.setTextSize(12);
                 dbOutputRow.addView(outputID);
 
-                TextView outputBrand = new TextView(this);
+                TextView outputNameO = new TextView(this);
                 params.weight = 3.0f;
-                outputBrand.setLayoutParams(params);
-                outputBrand.setText(cursor.getString(NameOIndex));
-                outputBrand.setTextSize(12);
-                dbOutputRow.addView(outputBrand);
+                outputNameO.setLayoutParams(params);
+                outputNameO.setText(cursor.getString(NameOIndex));
+                outputNameO.setTextSize(12);
+                dbOutputRow.addView(outputNameO);
 
-                TextView outputModel = new TextView(this);
-                params.weight = 3.0f;
-                outputModel.setLayoutParams(params);
-                outputModel.setText(cursor.getString(PriseIndex));
-                outputModel.setTextSize(12);
-                dbOutputRow.addView(outputModel);
+                TextView outputPrise = new TextView(this);
+                params.weight = 2.0f;
+                outputPrise.setLayoutParams(params);
+                outputPrise.setText(cursor.getString(PriseIndex));
+                outputPrise.setTextSize(12);
+                dbOutputRow.addView(outputPrise);
 
-                TextView outputDate = new TextView(this);
-                params.weight = 3.0f;
-                outputDate.setLayoutParams(params);
-                outputDate.setText(cursor.getString(PolIndex));
-                outputDate.setTextSize(12);
-                dbOutputRow.addView(outputDate);
+                TextView outputPol = new TextView(this);
+                params.weight = 1.0f;
+                outputPol.setLayoutParams(params);
+                outputPol.setText(cursor.getString(PolIndex));
+                outputPol.setTextSize(12);
+                dbOutputRow.addView(outputPol);
 
 
                 dbOutput.addView(dbOutputRow);
