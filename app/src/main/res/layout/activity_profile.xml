@@ -108,7 +108,7 @@
         />
 
     <Button
-        android:id="@+id/regNewUser"
+        android:id="@+id/exite"
         android:layout_width="200dp"
         android:layout_height="35dp"
         android:background="@drawable/style_button"

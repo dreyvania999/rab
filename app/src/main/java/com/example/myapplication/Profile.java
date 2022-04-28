@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 public class Profile extends AppCompatActivity implements View.OnClickListener {
 
-    Button editprof, regNewUser, pageView;
+    Button editprof, exite, pageView;
     TextView korzina, kolvo, username, usersurname;
 
 
@@ -24,10 +24,10 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         username = findViewById(R.id.username);
         usersurname = findViewById(R.id.usersurname);
         editprof = findViewById(R.id.editprof);
-        regNewUser = findViewById(R.id.regNewUser);
+        exite = findViewById(R.id.exite);
         pageView = findViewById(R.id.pageView);
         editprof.setOnClickListener(this);
-        regNewUser.setOnClickListener(this);
+        exite.setOnClickListener(this);
         pageView.setOnClickListener(this);
     }
 
