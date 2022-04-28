@@ -38,8 +38,7 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
         editAddress = findViewById(R.id.editAddress);
         ButtonLogin = findViewById(R.id.ButtonLogin);
         ButtonLogin.setOnClickListener(this);
-        Bundle arguments = getIntent().getExtras();
-        index = arguments.getInt("key");
+
 
         if (lis.l!=""){
             Cursor cursorLog = database.query(DBHelper.People, null, null, null, null, null, null);
@@ -51,6 +50,7 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
                 int SurnameIndex = cursorLog.getColumnIndex(DBHelper.Surname);
                 int AddressIndex = cursorLog.getColumnIndex(DBHelper.Address);
                 int loginIndex = cursorLog.getColumnIndex(DBHelper.Login);
+                int idIndex =cursorLog.getColumnIndex(DBHelper.KEY_ID);
                 do {
                     if (lis.l.equals(cursorLog.getString(loginIndex))) {
 
@@ -61,6 +61,7 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
                         editSurname.setText(cursorLog.getString(SurnameIndex));
                         editBirtday.setText(cursorLog.getString(BirtdayIndex));
                         editAddress.setText(cursorLog.getString(AddressIndex));
+                        index  = Integer.parseInt(cursorLog.getString(idIndex));
 
                         break;
                     }
