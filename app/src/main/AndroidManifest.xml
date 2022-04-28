@@ -13,22 +13,10 @@
             android:name=".Registration"
             android:exported="false" />
         <activity
-            android:name=".AdminAddAcsesuar"
-            android:exported="false" />
-        <activity
             android:name=".AdminAddOdegda"
             android:exported="false" />
         <activity
-            android:name=".AdminAddObuv"
-            android:exported="false" />
-        <activity
             android:name=".Profile"
-            android:exported="false" />
-        <activity
-            android:name=".Acsesuar"
-            android:exported="false" />
-        <activity
-            android:name=".Obuv"
             android:exported="false" />
         <activity
             android:name=".Odegda"
