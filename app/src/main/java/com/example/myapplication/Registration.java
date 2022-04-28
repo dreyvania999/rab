@@ -20,6 +20,8 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
     EditText editPhone,editPassword,editLogin,editName,editSurname,editBirtday,editAddress;
     boolean bil=false;
     private Object ContentValues;
+    int index;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,74 +40,87 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
         ButtonLogin.setOnClickListener(this);
 
 
-        if (lis.l.size()>0&&lis.p.size()>0){
+        if (lis.l!=""){
             Cursor cursorLog = database.query(DBHelper.People, null, null, null, null, null, null);
+            if (cursorLog.moveToFirst()) {
+                int passwordIndex = cursorLog.getColumnIndex(DBHelper.Password);
+                int NameIndex = cursorLog.getColumnIndex(DBHelper.Name);
+                int PhoneIndex = cursorLog.getColumnIndex(DBHelper.Phone);
+                int BirtdayIndex = cursorLog.getColumnIndex(DBHelper.Birtday);
+                int SurnameIndex = cursorLog.getColumnIndex(DBHelper.Surname);
+                int AddressIndex = cursorLog.getColumnIndex(DBHelper.Address);
+                int loginIndex = cursorLog.getColumnIndex(DBHelper.Login);
+                int idIndex =cursorLog.getColumnIndex(DBHelper.KEY_ID);
+                do {
+                    if (lis.l.equals(cursorLog.getString(loginIndex))) {
 
-            editPhone.setText(cursorLog.getString(lis.l.get(0)));
-            editPassword.setText(cursorLog.getString(lis.p.get(0)));
-            editLogin.setText(cursorLog.getString(lis.l.get(0)));
-            editName.setText(cursorLog.getString(lis.l.get(0)));
-            editSurname.setText(cursorLog.getString(lis.l.get(0)));
-            editBirtday.setText(cursorLog.getString(lis.l.get(0)));
-            editAddress.setText(cursorLog.getString(lis.l.get(0)));
+                        editPhone.setText(cursorLog.getString(PhoneIndex));
+                        editPassword.setText(cursorLog.getString(passwordIndex));
+                        editLogin.setText(cursorLog.getString(loginIndex));
+                        editName.setText(cursorLog.getString(NameIndex));
+                        editSurname.setText(cursorLog.getString(SurnameIndex));
+                        editBirtday.setText(cursorLog.getString(BirtdayIndex));
+                        editAddress.setText(cursorLog.getString(AddressIndex));
+                        index  = Integer.parseInt(cursorLog.getString(idIndex));
 
+                        break;
+                    }
 
+                } while (cursorLog.moveToNext());
+                cursorLog.close();
+                bil = true;
 
+            }
         }
 
     }
     @Override
     public void onClick(View view){
-        if (bil==false){
+        if (bil==false) {
 
-        switch (view.getId()){
-
-            case R.id.ButtonLogin:
-                Cursor signCursor = database.query(DBHelper.People, null, null, null, null, null, null);
-
-                boolean finded = false;
-                if(signCursor.moveToFirst()){
-                    int usernameIndex = signCursor.getColumnIndex(DBHelper.Login);
-                    do{
-                        if(editLogin.getText().toString().equals(signCursor.getString(usernameIndex))){
-                            Toast.makeText(this, "Введённый логин уже зарегистрирован", Toast.LENGTH_LONG).show();
-                            finded = true;
-                            break;
-                        }
-                    }while (signCursor.moveToNext());
-                }
-                if(!finded){
-                    ContentValues contentValues = new ContentValues();
-                    contentValues.put(DBHelper.Login, editLogin.getText().toString());
-                    contentValues.put(DBHelper.Password, editPassword.getText().toString());
-                    contentValues.put(DBHelper.Name, editName.getText().toString());
-                    contentValues.put(DBHelper.Phone, editPhone.getText().toString());
-                    contentValues.put(DBHelper.Birtday, editBirtday.getText().toString());
-                    contentValues.put(DBHelper.Surname, editSurname.getText().toString());
-                    contentValues.put(DBHelper.Address, editAddress.getText().toString());
-                    database.insert(DBHelper.People, null, contentValues);
-                    Toast.makeText(this, "Вы успешно зарегистрированы", Toast.LENGTH_LONG).show();
-                    Intent intent1 = new Intent(this, MainActivity.class);
-                    startActivity(intent1);
-                }
-                signCursor.close();
-                break;
-
-        }
-        }
-        else {
-            Cursor signCursor = database.query(DBHelper.People, null, null, null, null, null, null);
+            Cursor signCursor1 = database.query(DBHelper.People, null, null, null, null, null, null);
 
             boolean finded = false;
-            if(signCursor.moveToFirst()){
-                int usernameIndex = signCursor.getColumnIndex(DBHelper.Login);
-                do{
-                    if(editLogin.getText().toString().equals(signCursor.getString(usernameIndex))){
+            if (signCursor1.moveToFirst()) {
+                int usernameIndex = signCursor1.getColumnIndex(DBHelper.Login);
+                do {
+                    if (editLogin.getText().toString().equals(signCursor1.getString(usernameIndex))) {
                         Toast.makeText(this, "Введённый логин уже зарегистрирован", Toast.LENGTH_LONG).show();
                         finded = true;
                         break;
                     }
-                }while (signCursor.moveToNext());
+                } while (signCursor1.moveToNext());
+            }
+            if (!finded) {
+                ContentValues contentValues = new ContentValues();
+                contentValues.put(DBHelper.Login, editLogin.getText().toString());
+                contentValues.put(DBHelper.Password, editPassword.getText().toString());
+                contentValues.put(DBHelper.Name, editName.getText().toString());
+                contentValues.put(DBHelper.Phone, editPhone.getText().toString());
+                contentValues.put(DBHelper.Birtday, editBirtday.getText().toString());
+                contentValues.put(DBHelper.Surname, editSurname.getText().toString());
+                contentValues.put(DBHelper.Address, editAddress.getText().toString());
+                database.insert(DBHelper.People, null, contentValues);
+                Toast.makeText(this, "Вы успешно зарегистрированы", Toast.LENGTH_LONG).show();
+                Intent intent1 = new Intent(this, MainActivity.class);
+                startActivity(intent1);
+            }
+            signCursor1.close();
+
+        }
+        else {
+            Cursor signCursor2 = database.query(DBHelper.People, null, null, null, null, null, null);
+
+            boolean finded = false;
+            if(signCursor2.moveToFirst()){
+                int usernameIndex = signCursor2.getColumnIndex(DBHelper.Login);
+                do{
+                    if(editLogin.getText().toString().equals(signCursor2.getString(usernameIndex))){
+                        Toast.makeText(this, "Введённый логин уже зарегистрирован", Toast.LENGTH_LONG).show();
+                        finded = true;
+                        break;
+                    }
+                }while (signCursor2.moveToNext());
             }
             if(!finded){
                 ContentValues contentValues = new ContentValues();
@@ -116,12 +131,12 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
                 contentValues.put(DBHelper.Birtday, editBirtday.getText().toString());
                 contentValues.put(DBHelper.Surname, editSurname.getText().toString());
                 contentValues.put(DBHelper.Address, editAddress.getText().toString());
-                database.update(DBHelper.People, (android.content.ContentValues) ContentValues,DBHelper.KEY_ID + " = '"+ lis.l.get(0) + "'",null);
+                database.update(DBHelper.People, contentValues,DBHelper.KEY_ID + " = '" + index + "'", null);
                 Toast.makeText(this, "Вы успешно зменили информацию", Toast.LENGTH_LONG).show();
                 Intent intent1 = new Intent(this, MainActivity.class);
                 startActivity(intent1);
             }
-            signCursor.close();
+            signCursor2.close();
 
 
         }

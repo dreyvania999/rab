@@ -13,7 +13,7 @@ public class AdminAddOdegda extends AppCompatActivity {
     Button addposition, pageClother, pageReg;
     TextView nameaddodegda, addimageodegda, addcostodegda, addsexogegda;
     EditText nameadd, costadd, addsex;
-//    Image addimage;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +29,7 @@ public class AdminAddOdegda extends AppCompatActivity {
         pageClother = findViewById(R.id.pageClother);
         addposition = findViewById(R.id.addposition);
         pageReg = findViewById(R.id.pageReg);
-//        pageClother.setOnClickListener(this);
-//        addposition.setOnClickListener(this);
-//        pageReg.setOnClickListener(this);
+
 
     }
 }
