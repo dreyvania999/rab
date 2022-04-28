@@ -6,4 +6,75 @@
     android:layout_height="match_parent"
     tools:context=".AdminAddOdegda">
 
+    <Button
+        android:id="@+id/addposition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Добавить позицию"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addcostodegda" />
+
+    <TextView
+        android:id="@+id/nameaddodegda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="116dp"
+        android:text="Название"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/addcostodegda"
+        android:layout_width="87dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:text="Стоимость"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addimageodegda"
+        app:layout_constraintVertical_bias="0.215" />
+
+    <TextView
+        android:id="@+id/addimageodegda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="108dp"
+        android:text="Изображение"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameaddodegda" />
+
+    <ImageView
+        android:id="@+id/addimage"
+        android:layout_width="102dp"
+        android:layout_height="98dp"
+        app:layout_constraintBottom_toTopOf="@+id/addcost"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.297"
+        app:layout_constraintStart_toEndOf="@+id/addimageodegda"
+        app:layout_constraintTop_toBottomOf="@+id/addname" />
+
+    <TextView
+        android:id="@+id/addname"
+        android:layout_width="155dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="116dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/nameaddodegda"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/addcost"
+        android:layout_width="128dp"
+        android:layout_height="21dp"
+        app:layout_constraintBottom_toTopOf="@+id/addposition"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.354"
+        app:layout_constraintStart_toEndOf="@+id/addcostodegda"
+        app:layout_constraintTop_toBottomOf="@+id/addimageodegda"
+        app:layout_constraintVertical_bias="0.459" />
 </androidx.constraintlayout.widget.ConstraintLayout>
