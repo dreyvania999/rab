@@ -109,9 +109,11 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
 
         }
         else {
+            boolean finded = false;
             Cursor signCursor2 = database.query(DBHelper.People, null, null, null, null, null, null);
 
-            boolean finded = false;
+            if (editLogin.getText().toString()!=lis.l){
+
             if(signCursor2.moveToFirst()){
                 int usernameIndex = signCursor2.getColumnIndex(DBHelper.Login);
                 do{
@@ -121,7 +123,7 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
                         break;
                     }
                 }while (signCursor2.moveToNext());
-            }
+            }}
             if(!finded){
                 ContentValues contentValues = new ContentValues();
                 contentValues.put(DBHelper.Login, editLogin.getText().toString());
