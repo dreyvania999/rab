@@ -13,10 +13,11 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="parent"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/ButtonLogin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editLogin"
-        app:layout_constraintBottom_toTopOf="@+id/ButtonLogin" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editLogin" />
 
     <EditText
         android:id="@+id/editLogin"
@@ -24,56 +25,67 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Login"
+        android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/editPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editPhone" />
+
     <EditText
         android:id="@+id/editName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Name"
+        android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/editSurname"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/editSurname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Surname"
+        android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/editBirtday"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editName" />
+
     <EditText
         android:id="@+id/editBirtday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Birtday"
+        android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/editAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editSurname" />
+
     <EditText
         android:id="@+id/editAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Address"
+        android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/editPhone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editBirtday" />
+
     <EditText
         android:id="@+id/editPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Phone"
+        android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/editLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
