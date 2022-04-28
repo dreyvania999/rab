@@ -29,7 +29,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ButtonLogin.setOnClickListener(this);
         DBHelper = new DBHelper(this);
         DB = DBHelper.getWritableDatabase();
-
+        lis.l.clear();
+        lis.p.clear();
     }
 
     @Override
@@ -49,7 +50,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     int loginIndex = cursorLog.getColumnIndex(DBHelper.Login);
                     do {
                         if (editPassword.getText().toString().equals(cursorLog.getString(passwordIndex)) && editLogin.getText().toString().equals(cursorLog.getString(loginIndex))) {
-
+                            lis.l.add(loginIndex);
+                            lis.p.add(passwordIndex);
                                 Intent intent1 = new Intent(this, Odegda.class);
                                 startActivity(intent1);
 
