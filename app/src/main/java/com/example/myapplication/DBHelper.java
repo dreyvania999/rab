@@ -47,9 +47,9 @@ public class DBHelper extends SQLiteOpenHelper {
                 + " integer primary key," + KO + " integer NOT NULL, FOREIGN KEY (keyo) REFERENCES auth(_id)" +  ")");
 
 
-        sqLiteDatabase.execSQL("insert into " + People + "(" +  NameO + " ," + Prise + " ,"+ Pol  + ")" + " values "+"('Иванов', 1234, 'М')");
+        sqLiteDatabase.execSQL("insert into " + Odegda + "(" +  NameO + " ," + Prise + " ,"+ Pol  + ")" + " values "+"('Иванов', 1234, 'М')");
 
-        sqLiteDatabase.execSQL("insert into " + Odegda + "(" +  Name + " ," + Phone + " ,"+ Birtday+ " ,"+ Pol +" ," + Surname + " ," +
+        sqLiteDatabase.execSQL("insert into " + People + "(" +  Name + " ," + Phone + " ,"+ Birtday+ " ,"+ Pol +" ," + Surname + " ," +
                 Address + " ," + Login + " ," + Password  + ")" + " values "+"('Иванов', '+79535599079', '2003.03.03','М','Иванов','Улицаулицавобще','admin','admin')");
 
     }

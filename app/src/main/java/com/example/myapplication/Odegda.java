@@ -32,6 +32,7 @@ public class Odegda extends AppCompatActivity implements View.OnClickListener {
 
         pageProfile = findViewById(R.id.pageProfile);
         pageProfile.setOnClickListener(this);
+        UpdateTable();
     }
 
     @Override
@@ -61,17 +62,6 @@ public class Odegda extends AppCompatActivity implements View.OnClickListener {
                 TableRow.LayoutParams params = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
 
 
-                ImageView imageView = new ImageView(this);
-                ConstraintLayout constraintLayout = new ConstraintLayout(this);
-
-                imageView.setImageResource(R.drawable.pan);
-
-                ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams
-                        (ConstraintLayout.LayoutParams.WRAP_CONTENT , ConstraintLayout.LayoutParams.WRAP_CONTENT);
-                imageView.setLayoutParams(layoutParams);
-                constraintLayout.addView(imageView);
-
-                setContentView(constraintLayout);
 
                 TextView outputID = new TextView(this);
                 params.weight = 1.0f;
@@ -101,15 +91,6 @@ public class Odegda extends AppCompatActivity implements View.OnClickListener {
                 outputDate.setTextSize(12);
                 dbOutputRow.addView(outputDate);
 
-
-                Button deleteBtn = new Button(this);
-                deleteBtn.setOnClickListener(this);
-                params.weight = 1.0f;
-                deleteBtn.setLayoutParams(params);
-                deleteBtn.setText("Удалить\nзапись");
-                deleteBtn.setTextSize(12);
-                deleteBtn.setId(cursor.getInt(idIndex));
-                dbOutputRow.addView(deleteBtn);
 
                 dbOutput.addView(dbOutputRow);
             } while (cursor.moveToNext());

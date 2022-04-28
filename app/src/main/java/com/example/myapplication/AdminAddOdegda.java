@@ -3,16 +3,12 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
-import android.database.Cursor;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 
 public class AdminAddOdegda extends AppCompatActivity implements View.OnClickListener {
@@ -45,19 +41,8 @@ public class AdminAddOdegda extends AppCompatActivity implements View.OnClickLis
 
         DBHelper = new DBHelper(this);
         DB = DBHelper.getWritableDatabase();
-        UpdateDB();
     }
 
-    public void UpdateDB(){
-        Cursor cursor = DB.query(DBHelper.Odegda, null,null,null,null,null,null);
-        if (cursor.moveToFirst()) {
-            int idIndex = cursor.getColumnIndex(DBHelper.KEY_ID);
-            int nameIndex = cursor.getColumnIndex(DBHelper.NameO);
-            int priseIndex = cursor.getColumnIndex(DBHelper.Prise);
-            int pol = cursor.getColumnIndex(DBHelper.Pol);
-        }
-        cursor.close();
-    }
 
     @Override
     public void onClick(View view) {
@@ -71,10 +56,17 @@ public class AdminAddOdegda extends AppCompatActivity implements View.OnClickLis
                 contentValues.put(DBHelper.Prise,prise);
                 contentValues.put(DBHelper.Pol,pol);
                 DB.insert(DBHelper.Odegda,null,contentValues);
-                UpdateDB();
                 addsex.setText("");
                 costadd.setText("");
                 nameadd.setText("");
+                break;
+            case R.id.pageClother:
+                Intent intent1 = new Intent(this, Odegda.class);
+                startActivity(intent1);
+                break;
+            case R.id.pageReg:
+                Intent intent2 = new Intent(this, MainActivity.class);
+                startActivity(intent2);
                 break;
         }
 
