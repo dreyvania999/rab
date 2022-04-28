@@ -4,11 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.media.Image;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class AdminAddOdegda extends AppCompatActivity {
+public class AdminAddOdegda extends AppCompatActivity implements View.OnClickListener {
 
     Button addposition, pageClother, pageReg;
     TextView nameaddodegda, addimageodegda, addcostodegda, addsexogegda;
@@ -30,6 +31,13 @@ public class AdminAddOdegda extends AppCompatActivity {
         addposition = findViewById(R.id.addposition);
         pageReg = findViewById(R.id.pageReg);
 
+        addposition.setOnClickListener(this);
+        pageClother.setOnClickListener(this);
+        pageReg.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
 
     }
 }

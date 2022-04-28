@@ -30,7 +30,7 @@ public class Odegda extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.pageProfile:
-                Intent intent1 = new Intent(this, Registration.class);
+                Intent intent1 = new Intent(this, Profile.class);
                 startActivity(intent1);
                 break;
         }
