@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
@@ -38,6 +39,18 @@ public class AdminAddOdegda extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.addposition:
 
+                break;
+            case R.id.pageReg:
+                Intent intent2 = new Intent(this, MainActivity.class);
+                startActivity(intent2);
+                break;
+            case R.id.pageClother:
+                Intent intent3 = new Intent(this, Odegda.class);
+                startActivity(intent3);
+                break;
+        }
     }
 }
