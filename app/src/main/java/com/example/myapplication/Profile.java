@@ -9,23 +9,24 @@ import android.widget.TextView;
 
 public class Profile extends AppCompatActivity {
 
-    Button addposition, pageClother, pageReg;
-    TextView nameaddodegda, addimageodegda, addcostodegda, addsexogegda;
-    EditText nameadd, costadd, addsex;
+    Button editprof, regNewUser, pageView;
+    TextView korzina, kolvo, username, usersurname;
+
+//    Image avataruser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        nameadd = findViewById(R.id.nameadd);
-        costadd = findViewById(R.id.costadd);
-        addsex = findViewById(R.id.addsex);
-        nameaddodegda = findViewById(R.id.nameaddodegda);
-        addimageodegda = findViewById(R.id.addimageodegda);
-        addcostodegda = findViewById(R.id.addcostodegda);
-        addsexogegda = findViewById(R.id.addsexogegda);
-        pageClother = findViewById(R.id.pageClother);
-        addposition = findViewById(R.id.addposition);
-        pageReg = findViewById(R.id.pageReg);
+        korzina = findViewById(R.id.korzina);
+        kolvo = findViewById(R.id.kolvo);
+        username = findViewById(R.id.username);
+        usersurname = findViewById(R.id.usersurname);
+        editprof = findViewById(R.id.editprof);
+        regNewUser = findViewById(R.id.regNewUser);
+        pageView = findViewById(R.id.pageView);
+//        editprof.setOnClickListener(this);
+//        regNewUser.setOnClickListener(this);
+//        pageView.setOnClickListener(this);
     }
 }
