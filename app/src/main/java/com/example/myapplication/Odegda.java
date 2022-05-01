@@ -36,6 +36,7 @@ public class Odegda extends AppCompatActivity implements View.OnClickListener {
         pageProfile = findViewById(R.id.pageProfile);
         pageProfile.setOnClickListener(this);
 
+
         DBHelper = new DBHelper(this);
         DB = DBHelper.getWritableDatabase();
 
@@ -72,20 +73,19 @@ public class Odegda extends AppCompatActivity implements View.OnClickListener {
                 TableRow.LayoutParams params = new TableRow.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
 
+                ImageView outputImg = new ImageView(this);
+                params.weight = 1.0f;
+                outputImg.setLayoutParams(params);
+                Resources res = getResources();
+                Drawable drawable = ResourcesCompat.getDrawable(res, R.drawable.pan, null);
+                outputImg.setImageDrawable(drawable);
+                dbOutputRow.addView(outputImg);
 
                 TextView outputID = new TextView(this);
                 params.weight = 1.0f;
                 outputID.setLayoutParams(params);
                 outputID.setText(cursor.getString(idIndex));
                 dbOutputRow.addView(outputID);
-
-                ImageView outputImg = new ImageView(this);
-                params.weight = 3.0f;
-                outputImg.setLayoutParams(params);
-                Resources res = getResources();
-                Drawable drawable = ResourcesCompat.getDrawable(res, R.drawable.pan, null);
-                outputImg.setImageDrawable(drawable);
-                dbOutputRow.addView(outputImg);
 
                 TextView outputProduct = new TextView(this);
                 params.weight = 3.0f;
