@@ -7,18 +7,25 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
-public class AdminAddOdegda extends AppCompatActivity implements View.OnClickListener {
+public class AdminAddOdegda extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     Button addposition, pageClother, pageReg;
     TextView nameaddodegda, addimageodegda, addcostodegda, addsexogegda;
-    EditText nameadd, costadd, addsex;
+    EditText nameadd, costadd;
+    Spinner addsex;
     DBHelper DBHelper;
     SQLiteDatabase DB;
     ContentValues  contentValues;
+    String polc;
+    String[] sex = {"Мужской","Женский","Не указан"};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +45,12 @@ public class AdminAddOdegda extends AppCompatActivity implements View.OnClickLis
         addposition.setOnClickListener(this);
         pageClother.setOnClickListener(this);
         pageReg.setOnClickListener(this);
-
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, sex);
+        addsex.setAdapter(adapter);
         DBHelper = new DBHelper(this);
         DB = DBHelper.getWritableDatabase();
+        addsex.setOnItemSelectedListener(this);
+        addsex.setPrompt("Title");
     }
 
 
@@ -48,15 +58,15 @@ public class AdminAddOdegda extends AppCompatActivity implements View.OnClickLis
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.addposition:
-                String name =nameadd.getText().toString();
-                String prise =costadd.getText().toString();
-                String pol =addsex.getText().toString();
+                String nam =nameadd.getText().toString();
+                String pris =costadd.getText().toString();
+
+
                 contentValues = new ContentValues();
-                contentValues.put(DBHelper.Name,name);
-                contentValues.put(DBHelper.Prise,prise);
-                contentValues.put(DBHelper.Pol,pol);
-                DB.insert(DBHelper.Odegda,null,contentValues);
-                addsex.setText("");
+                contentValues.put(DBHelper.NameO,nam);
+                contentValues.put(DBHelper.Prise,pris);
+                contentValues.put(DBHelper.Pol,polc);
+                DB.insert(DBHelper.Odeg,null,contentValues);
                 costadd.setText("");
                 nameadd.setText("");
                 break;
@@ -69,6 +79,16 @@ public class AdminAddOdegda extends AppCompatActivity implements View.OnClickLis
                 startActivity(intent2);
                 break;
         }
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        polc = (String) parent.getSelectedItem();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
 }

@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     do {
                         if (editPassword.getText().toString().equals(cursorLog.getString(passwordIndex)) && editLogin.getText().toString().equals(cursorLog.getString(loginIndex))) {
                             lis.l =editLogin.getText().toString();
-                                Intent intent1 = new Intent(this, Odegda.class);
+                                Intent intent1 = new Intent(this, Profile.class);
                                 startActivity(intent1);
 
                             zahod = true;
@@ -67,10 +67,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 cursorLog.close();
                 break;
+
             case R.id.ButtonAdd:
                 Intent intent = new Intent(this, Registration.class);
                 startActivity(intent);
                 break;
+
         }
     }
 }

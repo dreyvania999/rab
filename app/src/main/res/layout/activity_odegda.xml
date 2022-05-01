@@ -7,7 +7,7 @@
     tools:context=".Odegda">
 
     <TableLayout
-        android:id="@+id/viewOdegda"
+        android:id="@+id/dbOutput"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/pageProfile"
@@ -15,43 +15,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameodegda">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+   </TableLayout>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="47dp" />
-    </TableLayout>
 
     <TextView
         android:id="@+id/imageodegda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/viewOdegda"
-        app:layout_constraintEnd_toStartOf="@+id/cost"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toEndOf="@+id/nameodegda"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/idodegda"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="id"
-        app:layout_constraintBottom_toTopOf="@+id/viewOdegda"
-        app:layout_constraintEnd_toStartOf="@+id/cost"
-        app:layout_constraintHorizontal_bias="0.043"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/nameodegda"
+        tools:layout_editor_absoluteX="16dp" />
 
     <TextView
         android:id="@+id/nameodegda"
@@ -61,7 +36,6 @@
         app:layout_constraintBottom_toTopOf="@+id/viewOdegda"
         app:layout_constraintEnd_toStartOf="@+id/cost"
         app:layout_constraintHorizontal_bias="0.246"
-        app:layout_constraintStart_toEndOf="@+id/idodegda"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView

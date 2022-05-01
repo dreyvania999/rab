@@ -18,20 +18,24 @@ import android.widget.TextView;
 
 public class Odegda extends AppCompatActivity implements View.OnClickListener {
     Button pageProfile;
-    TextView idodegda, nameodegda, imageodegda, cost, sexclother;
+    TextView nameodegda, imageodegda, cost, sexclother;
     DBHelper DBHelper;
     SQLiteDatabase DB;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_odegda);
-        idodegda = findViewById(R.id.idodegda);
         nameodegda = findViewById(R.id.nameodegda);
         imageodegda = findViewById(R.id.imageodegda);
         cost = findViewById(R.id.cost);
         sexclother = findViewById(R.id.sexclother);
         pageProfile = findViewById(R.id.pageProfile);
         pageProfile.setOnClickListener(this);
+
+        DBHelper = new DBHelper(this);
+        DB = DBHelper.getWritableDatabase();
+
         UpdateTable();
     }
 
@@ -46,49 +50,48 @@ public class Odegda extends AppCompatActivity implements View.OnClickListener {
     }
 
     public void UpdateTable(){
-        Cursor cursor = DB.query(DBHelper.Odegda, null, null, null, null, null, null);
+        Cursor cursor = DB.query(DBHelper.Odeg, null, null, null, null, null, null);
 
         if (cursor.moveToFirst()) {
             int idIndex = cursor.getColumnIndex(DBHelper.KEY_ID);
-            int NameOIndex = cursor.getColumnIndex(DBHelper.NameO);
-            int PriseIndex = cursor.getColumnIndex(DBHelper.Prise);
-            int PolIndex = cursor.getColumnIndex(DBHelper.Pol);
-
-            TableLayout dbOutput = findViewById(R.id.viewOdegda);
+            int productIndex = cursor.getColumnIndex(DBHelper.NameO);
+            int articleIndex = cursor.getColumnIndex(DBHelper.Prise);
+            int countIndex = cursor.getColumnIndex(DBHelper.Pol);
+            TableLayout dbOutput = findViewById(R.id.dbOutput);
             dbOutput.removeAllViews();
+
+
             do {
                 TableRow dbOutputRow = new TableRow(this);
                 dbOutputRow.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-                TableRow.LayoutParams params = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
+
+                TableRow.LayoutParams params = new TableRow.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
 
 
                 TextView outputID = new TextView(this);
                 params.weight = 1.0f;
                 outputID.setLayoutParams(params);
                 outputID.setText(cursor.getString(idIndex));
-                outputID.setTextSize(12);
                 dbOutputRow.addView(outputID);
 
-                TextView outputNameO = new TextView(this);
+                TextView outputProduct = new TextView(this);
                 params.weight = 3.0f;
-                outputNameO.setLayoutParams(params);
-                outputNameO.setText(cursor.getString(NameOIndex));
-                outputNameO.setTextSize(12);
-                dbOutputRow.addView(outputNameO);
+                outputProduct.setLayoutParams(params);
+                outputProduct.setText(cursor.getString(productIndex));
+                dbOutputRow.addView(outputProduct);
 
-                TextView outputPrise = new TextView(this);
-                params.weight = 2.0f;
-                outputPrise.setLayoutParams(params);
-                outputPrise.setText(cursor.getString(PriseIndex));
-                outputPrise.setTextSize(12);
-                dbOutputRow.addView(outputPrise);
+                TextView outputArticle = new TextView(this);
+                params.weight = 3.0f;
+                outputArticle.setLayoutParams(params);
+                outputArticle.setText(cursor.getString(articleIndex));
+                dbOutputRow.addView(outputArticle);
 
-                TextView outputPol = new TextView(this);
-                params.weight = 1.0f;
-                outputPol.setLayoutParams(params);
-                outputPol.setText(cursor.getString(PolIndex));
-                outputPol.setTextSize(12);
-                dbOutputRow.addView(outputPol);
+                TextView outputCount = new TextView(this);
+                params.weight = 3.0f;
+                outputCount.setLayoutParams(params);
+                outputCount.setText(cursor.getString(countIndex));
+                dbOutputRow.addView(outputCount);
 
 
                 dbOutput.addView(dbOutputRow);

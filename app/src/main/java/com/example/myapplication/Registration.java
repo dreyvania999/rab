@@ -46,7 +46,7 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
                 int passwordIndex = cursorLog.getColumnIndex(DBHelper.Password);
                 int NameIndex = cursorLog.getColumnIndex(DBHelper.Name);
                 int PhoneIndex = cursorLog.getColumnIndex(DBHelper.Phone);
-                int BirtdayIndex = cursorLog.getColumnIndex(DBHelper.Birtday);
+                int BirtdayIndex = cursorLog.getColumnIndex(DBHelper.Birthday);
                 int SurnameIndex = cursorLog.getColumnIndex(DBHelper.Surname);
                 int AddressIndex = cursorLog.getColumnIndex(DBHelper.Address);
                 int loginIndex = cursorLog.getColumnIndex(DBHelper.Login);
@@ -76,6 +76,10 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
     }
     @Override
     public void onClick(View view){
+        if (editAddress.getText().toString().equals("")||editBirtday.getText().toString().equals("") || editSurname.getText().toString().equals("")||editName.getText().toString().equals("") || editLogin.getText().toString().equals("")||editPhone.getText().toString().equals("") || editPassword.getText().toString().equals("")) {
+            Toast.makeText(this, "Заполните все поля", Toast.LENGTH_LONG).show();
+            return;
+        }
         if (bil==false) {
 
             Cursor signCursor1 = database.query(DBHelper.People, null, null, null, null, null, null);
@@ -97,7 +101,7 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
                 contentValues.put(DBHelper.Password, editPassword.getText().toString());
                 contentValues.put(DBHelper.Name, editName.getText().toString());
                 contentValues.put(DBHelper.Phone, editPhone.getText().toString());
-                contentValues.put(DBHelper.Birtday, editBirtday.getText().toString());
+                contentValues.put(DBHelper.Birthday, editBirtday.getText().toString());
                 contentValues.put(DBHelper.Surname, editSurname.getText().toString());
                 contentValues.put(DBHelper.Address, editAddress.getText().toString());
                 database.insert(DBHelper.People, null, contentValues);
@@ -130,7 +134,7 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
                 contentValues.put(DBHelper.Password, editPassword.getText().toString());
                 contentValues.put(DBHelper.Name, editName.getText().toString());
                 contentValues.put(DBHelper.Phone, editPhone.getText().toString());
-                contentValues.put(DBHelper.Birtday, editBirtday.getText().toString());
+                contentValues.put(DBHelper.Birthday, editBirtday.getText().toString());
                 contentValues.put(DBHelper.Surname, editSurname.getText().toString());
                 contentValues.put(DBHelper.Address, editAddress.getText().toString());
                 database.update(DBHelper.People, contentValues,DBHelper.KEY_ID + " = '" + index + "'", null);
