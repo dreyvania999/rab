@@ -2,10 +2,13 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -54,6 +57,7 @@ public class Odegda extends AppCompatActivity implements View.OnClickListener {
 
         if (cursor.moveToFirst()) {
             int idIndex = cursor.getColumnIndex(DBHelper.KEY_ID);
+            int  imgIndex = cursor.getColumnIndex(DBHelper.Img);
             int productIndex = cursor.getColumnIndex(DBHelper.NameO);
             int articleIndex = cursor.getColumnIndex(DBHelper.Prise);
             int countIndex = cursor.getColumnIndex(DBHelper.Pol);
@@ -74,6 +78,14 @@ public class Odegda extends AppCompatActivity implements View.OnClickListener {
                 outputID.setLayoutParams(params);
                 outputID.setText(cursor.getString(idIndex));
                 dbOutputRow.addView(outputID);
+
+                ImageView outputImg = new ImageView(this);
+                params.weight = 3.0f;
+                outputImg.setLayoutParams(params);
+                Resources res = getResources();
+                Drawable drawable = ResourcesCompat.getDrawable(res, R.drawable.pan, null);
+                outputImg.setImageDrawable(drawable);
+                dbOutputRow.addView(outputImg);
 
                 TextView outputProduct = new TextView(this);
                 params.weight = 3.0f;

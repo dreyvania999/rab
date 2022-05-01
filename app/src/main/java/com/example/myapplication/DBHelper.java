@@ -18,6 +18,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String Login = "login";
     public static final String Password = "password";
 
+    public static final String Img = "image";
     public static final String NameO = "nameOdegda";
     public static final String Prise = "prise";
 
@@ -39,7 +40,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 Address + " text," + Login + " text," + Password + " text" + ")");
 
         sqLiteDatabase.execSQL("create table " + Odeg + "(" + KEY_ID
-                + " integer primary key," + NameO + " text," + Prise + " text,"+  Pol +"  text" + ")");
+                + " integer primary key," + Img + "image, " + NameO + " text," + Prise + " text,"+  Pol +"  text" + ")");
 
         sqLiteDatabase.execSQL("create table " + Korzina + "(" + KEY_ID
                 + " integer primary key," + KO + " text" +  ")");
