@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminAddOdegda">
+    tools:context=".AdminAddBook">
 
 
     <EditText
@@ -67,11 +67,11 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/pagereg"
+        android:id="@+id/statistic"
         android:layout_width="160dp"
         android:layout_height="55dp"
         android:background="@drawable/style_button"
-        android:text="Регистрация пользователя"
+        android:text="Статистика"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/pageclother"

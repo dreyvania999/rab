@@ -2,7 +2,6 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -40,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 boolean zahod = false;
                 if (editPassword.getText().toString().equals("admin") && editLogin.getText().toString().equals("admin")) {
                     lis.l ="admin";
-                    Intent intent = new Intent(this, AdminAddOdegda.class);
+                    Intent intent = new Intent(this, AdminAddBook.class);
                     startActivity(intent);
                     zahod = true;
                 }

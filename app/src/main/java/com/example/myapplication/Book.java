@@ -15,7 +15,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-public class Odegda extends AppCompatActivity implements View.OnClickListener {
+public class Book extends AppCompatActivity implements View.OnClickListener {
     Button pageProfile, buttonAdd;
     DBHelper DBHelper;
     SQLiteDatabase DB;
@@ -25,7 +25,7 @@ public class Odegda extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_odegda);
+        setContentView(R.layout.activity_book);
 
 
         pageProfile = findViewById(R.id.pageProfile);
@@ -173,7 +173,7 @@ public class Odegda extends AppCompatActivity implements View.OnClickListener {
                 startActivity(intent1);
                 break;
             case R.id.buttonAdd:
-                Intent intent2 = new Intent(this, AdminAddOdegda.class);
+                Intent intent2 = new Intent(this, AdminAddBook.class);
                 startActivity(intent2);
                 break;
 

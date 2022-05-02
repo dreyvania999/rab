@@ -8,10 +8,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 
 public class Profile extends AppCompatActivity implements View.OnClickListener {
@@ -69,7 +65,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
                 startActivity(intent1);
                 break;
             case R.id.pageView:
-                Intent intent3 = new Intent(this, Odegda.class);
+                Intent intent3 = new Intent(this, Book.class);
                 startActivity(intent3);
                 break;
         }

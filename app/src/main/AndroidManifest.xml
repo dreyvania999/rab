@@ -16,16 +16,19 @@
             android:name=".jurnals"
             android:exported="false" />
         <activity
+            android:name=".Jpos"
+            android:exported="false" />
+        <activity
             android:name=".Registration"
             android:exported="false" />
         <activity
-            android:name=".AdminAddOdegda"
+            android:name=".AdminAddBook"
             android:exported="false" />
         <activity
             android:name=".Profile"
             android:exported="false" />
         <activity
-            android:name=".Odegda"
+            android:name=".Book"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

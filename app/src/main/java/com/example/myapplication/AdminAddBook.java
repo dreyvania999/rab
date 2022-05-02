@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -12,12 +11,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 
-public class AdminAddOdegda extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
+public class AdminAddBook extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     Button addposition, pageclother, pagereg;
     EditText avtoradd, costadd, nameadd;
@@ -32,7 +28,7 @@ public class AdminAddOdegda extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_add_odegda);
+        setContentView(R.layout.activity_admin_add_book);
 
         costadd = findViewById(R.id.costadd);
         avtoradd = findViewById(R.id.avtoradd);
@@ -40,7 +36,7 @@ public class AdminAddOdegda extends AppCompatActivity implements View.OnClickLis
         janrsp = findViewById(R.id.janrsp);
         pageclother = findViewById(R.id.pageclother);
         addposition = findViewById(R.id.addposition);
-        pagereg = findViewById(R.id.pagereg);
+        pagereg = findViewById(R.id.statistic);
 
         addposition.setOnClickListener(this);
         pageclother.setOnClickListener(this);
@@ -83,11 +79,11 @@ public class AdminAddOdegda extends AppCompatActivity implements View.OnClickLis
                 break;
 
             case R.id.pageclother:
-                Intent intent1 = new Intent(this, Odegda.class);
+                Intent intent1 = new Intent(this, Book.class);
                 startActivity(intent1);
                 break;
-            case R.id.pagereg:
-                Intent intent2 = new Intent(this, Registration.class);
+            case R.id.statistic:
+                Intent intent2 = new Intent(this, Jpos.class);
                 startActivity(intent2);
                 break;
         }
