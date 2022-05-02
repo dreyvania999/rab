@@ -7,6 +7,18 @@
     tools:context=".AdminAddJurnals">
 
 
+    <Spinner
+        android:id="@+id/janrsp"
+        android:layout_width="216dp"
+        android:layout_height="58dp"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/addposition"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cost"
+        app:layout_constraintVertical_bias="0.38" />
+
     <EditText
         android:id="@+id/name"
         android:layout_width="wrap_content"
@@ -16,9 +28,10 @@
         android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/addposition"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.191" />
+        app:layout_constraintVertical_bias="0.121" />
 
     <EditText
         android:id="@+id/publish"
@@ -29,19 +42,10 @@
         android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/addposition"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name"
-        app:layout_constraintVertical_bias="0.189" />
-
-    <Spinner
-        android:id="@+id/janrsp"
-        android:layout_width="216dp"
-        android:layout_height="58dp"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/addposition"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cost" />
+        app:layout_constraintVertical_bias="0.173" />
 
     <EditText
         android:id="@+id/cost"
@@ -51,20 +55,33 @@
         android:hint="cost"
         app:layout_constraintBottom_toTopOf="@+id/addposition"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/publish"
-        app:layout_constraintVertical_bias="0.278" />
+        app:layout_constraintVertical_bias="0.248" />
 
     <Button
         android:id="@+id/addposition"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="140dp"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/style_button"
         android:text="Добавить позицию"
+        app:layout_constraintBottom_toTopOf="@+id/addposbook"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/addposbook"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="136dp"
+        android:background="@drawable/style_button"
+        android:text="Добавление книг"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -75,8 +92,10 @@
         android:text="Статистика"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.64"
         app:layout_constraintStart_toEndOf="@+id/pagejurnals"
-        app:layout_constraintTop_toBottomOf="@+id/addposition" />
+        app:layout_constraintTop_toBottomOf="@+id/addposition"
+        app:layout_constraintVertical_bias="0.751" />
 
     <Button
         android:id="@+id/pagejurnals"
@@ -87,6 +106,7 @@
         android:text="Журналы"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addposition" />
+        app:layout_constraintTop_toBottomOf="@+id/addposition"
+        app:layout_constraintVertical_bias="0.751" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -57,13 +57,26 @@
 
     <Button
         android:id="@+id/addposition"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="124dp"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/style_button"
         android:text="Добавить позицию"
+        app:layout_constraintBottom_toTopOf="@+id/addposjur"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/addposjur"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="136dp"
+        android:background="@drawable/style_button"
+        android:text="Добавление журналов"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -74,8 +87,9 @@
         android:text="Статистика"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.586"
         app:layout_constraintStart_toEndOf="@+id/pagebook"
-        app:layout_constraintTop_toBottomOf="@+id/addposition" />
+        app:layout_constraintTop_toBottomOf="@+id/addposjur" />
 
     <Button
         android:id="@+id/pagebook"
@@ -86,6 +100,6 @@
         android:text="Книги"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addposition" />
+        app:layout_constraintTop_toBottomOf="@+id/addposjur" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

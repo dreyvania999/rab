@@ -16,7 +16,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 public class Book extends AppCompatActivity implements View.OnClickListener {
-    Button pageProfile, buttonAdd, pagejurnal;
+    Button pageProfile, buttonAdd, pagejurnal, addposjur;
     DBHelper DBHelper;
     SQLiteDatabase DB;
     ContentValues contentValues;
@@ -31,6 +31,8 @@ public class Book extends AppCompatActivity implements View.OnClickListener {
         pageProfile = findViewById(R.id.pageProfile);
         buttonAdd = findViewById(R.id.buttonAdd);
         pagejurnal = findViewById(R.id.pagejurnal);
+        addposjur = findViewById(R.id.addposjur);
+        addposjur.setOnClickListener(this);
         pageProfile.setOnClickListener(this);
         pagejurnal.setOnClickListener(this);
         buttonAdd.setOnClickListener(this);
@@ -181,6 +183,11 @@ public class Book extends AppCompatActivity implements View.OnClickListener {
             case R.id.pagejurnal:
                 Intent intent3 = new Intent(this, jurnals.class);
                 startActivity(intent3);
+                break;
+
+            case R.id.addposjur:
+                Intent intent4 = new Intent(this, Book.class);
+                startActivity(intent4);
                 break;
 
             default:
