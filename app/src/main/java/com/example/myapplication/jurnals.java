@@ -178,8 +178,8 @@ public class jurnals extends AppCompatActivity implements View.OnClickListener {
                 Intent intent2 = new Intent(this, AdminAddBook.class);
                 startActivity(intent2);
                 break;
-            case R.id.pagebook:
-                Intent intent3 = new Intent(this, jurnals.class);
+            case R.id.pagejurnal:
+                Intent intent3 = new Intent(this, Book.class);
                 startActivity(intent3);
                 break;
 
