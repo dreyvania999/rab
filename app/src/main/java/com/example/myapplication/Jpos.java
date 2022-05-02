@@ -58,7 +58,7 @@ public class Jpos extends AppCompatActivity implements View.OnClickListener {
             TextView outputQuantityUp = new TextView(this);
             paramsUp.weight = 3.0f;
             outputQuantityUp.setLayoutParams(paramsUp);
-            outputQuantityUp.setText("Кол-во посещений\n");
+            outputQuantityUp.setText("Имя\n");
             dbOutputRowUp.addView(outputQuantityUp);
 
             dbOutput.addView(dbOutputRowUp);

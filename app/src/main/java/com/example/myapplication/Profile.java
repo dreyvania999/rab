@@ -64,6 +64,10 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
                 Intent intent1 = new Intent(this, Registration.class);
                 startActivity(intent1);
                 break;
+            case R.id.exite:
+                Intent intent2 = new Intent(this, MainActivity.class);
+                startActivity(intent2);
+                break;
             case R.id.pageView:
                 Intent intent3 = new Intent(this, Book.class);
                 startActivity(intent3);
