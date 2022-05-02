@@ -24,11 +24,10 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public static final String Book = "book";
 
-    public static final String Korzina = "korzina";
-    public static final String KB = "keyb";
-    public static final String NameK = "bookkorz";
-    public static final String AvtorK = "avtorbkorz";
-    public static final String PriseK = "prisekorz";
+    public static final String Jurnal = "jurnal";
+    public static final String Namejur = "jurnalname";
+    public static final String Izdateljur = "jurnalizdat";
+    public static final String Prisejur = "jurnalcost";
 
 
 
@@ -46,8 +45,8 @@ public class DBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("create table " + Book + "(" + KEY_ID
                 + " integer primary key,"  + NameO + " text, " +  Avtor + " text, " + Prise + " text, "+  Janr + " text " + ")");
 
-        sqLiteDatabase.execSQL("create table " + Korzina + "(" + KEY_ID
-                + " integer primary key,  " +  NameK + " text, " +  AvtorK + " text, " + PriseK + " text " + ")");
+        sqLiteDatabase.execSQL("create table " + Jurnal + "(" + KEY_ID
+                + " integer primary key,  " +  Namejur + " text, " +  Izdateljur + " text, " + Prisejur + " text " + ")");
 
     }
 
@@ -56,7 +55,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL("drop table if exists " + People);
         sqLiteDatabase.execSQL("drop table if exists " + Book);
-        sqLiteDatabase.execSQL("drop table if exists " + Korzina);
+        sqLiteDatabase.execSQL("drop table if exists " + Jurnal);
 
 
         onCreate(sqLiteDatabase);
