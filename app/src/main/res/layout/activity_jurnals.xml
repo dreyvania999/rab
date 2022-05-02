@@ -23,7 +23,7 @@
 
 
     <Button
-        android:id="@+id/pagejurnal"
+        android:id="@+id/pagebook"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:text="Книги"
@@ -38,7 +38,7 @@
         android:text="Профиль"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/pagejurnal"
+        app:layout_constraintStart_toEndOf="@+id/pagebook"
         app:layout_constraintTop_toBottomOf="@+id/dbOutput" />
 
     <Button
@@ -49,7 +49,7 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/pagejurnal"
+        app:layout_constraintStart_toEndOf="@+id/pagebook"
         app:layout_constraintTop_toBottomOf="@+id/dbOutput" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
