@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.ButtonLogin:
                 boolean zahod = false;
                 if (editPassword.getText().toString().equals("admin") && editLogin.getText().toString().equals("admin")) {
+                    lis.l ="admin";
                     Intent intent = new Intent(this, AdminAddOdegda.class);
                     startActivity(intent);
                     zahod = true;
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.ButtonAdd:
+                lis.l="";
                 Intent intent = new Intent(this, Registration.class);
                 startActivity(intent);
                 break;

@@ -1,67 +1,66 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.res.ResourcesCompat;
 
+import android.content.ContentValues;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
 public class Odegda extends AppCompatActivity implements View.OnClickListener {
-    Button pageProfile;
-    TextView nameodegda, imageodegda, cost, sexclother;
+    Button pageProfile, buttonAdd;
+    TextView namebook, avtorbook, costbook, janr;
     DBHelper DBHelper;
     SQLiteDatabase DB;
+    ContentValues contentValues;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_odegda);
-        nameodegda = findViewById(R.id.nameodegda);
-        imageodegda = findViewById(R.id.imageodegda);
-        cost = findViewById(R.id.cost);
-        sexclother = findViewById(R.id.sexclother);
-        pageProfile = findViewById(R.id.pageProfile);
-        pageProfile.setOnClickListener(this);
 
+        namebook = findViewById(R.id.namebook);
+        avtorbook = findViewById(R.id.avtorbook);
+        costbook = findViewById(R.id.costbook);
+        janr = findViewById(R.id.janr);
+        pageProfile = findViewById(R.id.pageProfile);
+        buttonAdd = findViewById(R.id.buttonAdd);
+        pageProfile.setOnClickListener(this);
+        buttonAdd.setOnClickListener(this);
+
+        if (lis.l.equals("admin"))  {
+            buttonAdd.setVisibility(View.VISIBLE);
+            pageProfile.setVisibility(View.INVISIBLE);
+
+        }
 
         DBHelper = new DBHelper(this);
         DB = DBHelper.getWritableDatabase();
 
         UpdateTable();
+
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.pageProfile:
-                Intent intent1 = new Intent(this, Profile.class);
-                startActivity(intent1);
-                break;
-        }
-    }
+
 
     public void UpdateTable(){
-        Cursor cursor = DB.query(DBHelper.Odeg, null, null, null, null, null, null);
+        Cursor cursor = DB.query(DBHelper.Book, null, null, null, null, null, null);
 
         if (cursor.moveToFirst()) {
             int idIndex = cursor.getColumnIndex(DBHelper.KEY_ID);
-            int  imgIndex = cursor.getColumnIndex(DBHelper.Img);
-            int productIndex = cursor.getColumnIndex(DBHelper.NameO);
-            int articleIndex = cursor.getColumnIndex(DBHelper.Prise);
-            int countIndex = cursor.getColumnIndex(DBHelper.Pol);
+            int bookIndex = cursor.getColumnIndex(DBHelper.NameO);
+            int athorIndex = cursor.getColumnIndex(DBHelper.Avtor);
+            int priseIndex = cursor.getColumnIndex(DBHelper.Prise);
+            int janrIndex = cursor.getColumnIndex(DBHelper.Janr);
             TableLayout dbOutput = findViewById(R.id.dbOutput);
             dbOutput.removeAllViews();
 
@@ -73,43 +72,137 @@ public class Odegda extends AppCompatActivity implements View.OnClickListener {
                 TableRow.LayoutParams params = new TableRow.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
 
-                ImageView outputImg = new ImageView(this);
-                params.weight = 1.0f;
-                outputImg.setLayoutParams(params);
-                Resources res = getResources();
-                Drawable drawable = ResourcesCompat.getDrawable(res, R.drawable.pan, null);
-                outputImg.setImageDrawable(drawable);
-                dbOutputRow.addView(outputImg);
-
                 TextView outputID = new TextView(this);
-                params.weight = 1.0f;
+                params.weight = 1f;
                 outputID.setLayoutParams(params);
                 outputID.setText(cursor.getString(idIndex));
                 dbOutputRow.addView(outputID);
 
-                TextView outputProduct = new TextView(this);
+                TextView outputBook = new TextView(this);
                 params.weight = 3.0f;
-                outputProduct.setLayoutParams(params);
-                outputProduct.setText(cursor.getString(productIndex));
-                dbOutputRow.addView(outputProduct);
+                outputBook.setLayoutParams (params);
+                outputBook.setText(cursor.getString(bookIndex));
+                dbOutputRow.addView(outputBook);
 
-                TextView outputArticle = new TextView(this);
+                TextView outputAvtor = new TextView(this);
                 params.weight = 3.0f;
-                outputArticle.setLayoutParams(params);
-                outputArticle.setText(cursor.getString(articleIndex));
-                dbOutputRow.addView(outputArticle);
+                outputAvtor.setLayoutParams (params);
+                outputAvtor.setText(cursor.getString(athorIndex));
+                dbOutputRow.addView(outputAvtor);
 
-                TextView outputCount = new TextView(this);
+                TextView outputPrice = new TextView(this);
+                params.weight = 2.0f;
+                outputPrice.setLayoutParams(params);
+                outputPrice.setText(cursor.getString(priseIndex));
+                dbOutputRow.addView(outputPrice);
+
+                TextView outputJanr = new TextView(this);
                 params.weight = 3.0f;
-                outputCount.setLayoutParams(params);
-                outputCount.setText(cursor.getString(countIndex));
-                dbOutputRow.addView(outputCount);
+                outputJanr.setLayoutParams(params);
+                outputJanr.setText(cursor.getString(janrIndex));
+                dbOutputRow.addView(outputJanr);
 
+
+                if (lis.l.equals("admin"))  {
+                    Button delete = new Button(this);
+                    delete.setOnClickListener(this);
+                    params.weight = 1.0f;
+                    delete.setLayoutParams(params);
+                    delete.setText("del");
+                    delete.setId(cursor.getInt(idIndex));
+                    dbOutputRow.addView(delete);
+                    delete.setVisibility(View.VISIBLE);
+                }
+                else
+                {
+                    Button add = new Button(this);
+                    add.setOnClickListener(this);
+                    params.weight = 1.0f;
+                    add.setLayoutParams(params);
+                    add.setText("add");
+                    add.setId(cursor.getInt(idIndex));
+                    dbOutputRow.addView(add);
+                    add.setVisibility(View.VISIBLE);
+                }
 
                 dbOutput.addView(dbOutputRow);
+
             } while (cursor.moveToNext());
         }
         cursor.close();
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.pageProfile:
+                Intent intent1 = new Intent(this, Profile.class);
+                startActivity(intent1);
+                break;
+            case R.id.buttonAdd:
+                Intent intent2 = new Intent(this, AdminAddOdegda.class);
+                startActivity(intent2);
+                break;
+
+            default:
+                if (lis.l.equals("admin"))  {
+                View outputDBRow = (View) view.getParent();
+                ViewGroup outputDB = (ViewGroup) outputDBRow.getParent();
+                outputDB.removeView(outputDBRow);
+                outputDB.invalidate();
+
+                DB.delete(DBHelper.Book, DBHelper.KEY_ID + " = ?", new String[]{String.valueOf((view.getId()))});
+
+                contentValues = new ContentValues();
+                Cursor cursorUpdater = DB.query(DBHelper.Book, null, null, null, null, null, null);
+                if (cursorUpdater.moveToFirst()) {
+                    int idIndex = cursorUpdater.getColumnIndex(DBHelper.KEY_ID);
+                    int bookIndex = cursorUpdater.getColumnIndex(DBHelper.NameO);
+                    int athorIndex = cursorUpdater.getColumnIndex(DBHelper.Avtor);
+                    int priseIndex = cursorUpdater.getColumnIndex(DBHelper.Prise);
+                    int janrIndex = cursorUpdater.getColumnIndex(DBHelper.Janr);
+                    int realID = 1;
+                    do {
+                        if (cursorUpdater.getInt(idIndex) > realID) {
+                            contentValues.put(DBHelper.KEY_ID, realID);
+                            contentValues.put(DBHelper.NameO, cursorUpdater.getString(bookIndex));
+                            contentValues.put(DBHelper.Avtor, cursorUpdater.getString(athorIndex));
+                            contentValues.put(DBHelper.Prise, cursorUpdater.getString(priseIndex));
+                            contentValues.put(DBHelper.Janr, cursorUpdater.getString(janrIndex));
+                            DB.replace(DBHelper.Book, null, contentValues);
+                        }
+                        realID++;
+                    } while (cursorUpdater.moveToNext());
+                    if (cursorUpdater.moveToLast()) {
+                        DB.delete(DBHelper.Book, DBHelper.KEY_ID + " = ?", new String[]{cursorUpdater.getString(idIndex)});
+                    }
+                    UpdateTable();
+                }}
+                else {
+                    Cursor cursor = DB.query(DBHelper.Book, null, null, null, null, null, null);
+
+
+                    View outputDBRow = (View) view.getParent();
+                    ViewGroup outputDB = (ViewGroup) outputDBRow.getParent();
+                    outputDB.removeView(outputDBRow);
+                    outputDB.invalidate();
+
+                    contentValues = new ContentValues();
+
+                    String name = "curs())";
+                    String avtor = "ijhxn";
+                    String prise = "kjb";
+
+                    contentValues.put(DBHelper.NameK, name);
+                    contentValues.put(DBHelper.AvtorK, avtor);
+                    contentValues.put(DBHelper.PriseK, prise);
+                    DB.insert(DBHelper.Korzina, null, contentValues);
+
+
+                }
+                break;
+        }
+
+
+    }
 }

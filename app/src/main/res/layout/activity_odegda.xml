@@ -13,51 +13,59 @@
         app:layout_constraintBottom_toTopOf="@+id/pageProfile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameodegda">
+        app:layout_constraintTop_toBottomOf="@+id/avtorbook">
 
-   </TableLayout>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </TableLayout>
 
 
     <TextView
-        android:id="@+id/imageodegda"
+        android:id="@+id/namebook"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/viewOdegda"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/nameodegda"
-        tools:layout_editor_absoluteX="16dp" />
-
-    <TextView
-        android:id="@+id/nameodegda"
-        android:layout_width="109dp"
-        android:layout_height="19dp"
+        android:layout_marginBottom="2dp"
         android:text="Название"
-        app:layout_constraintBottom_toTopOf="@+id/viewOdegda"
-        app:layout_constraintEnd_toStartOf="@+id/cost"
-        app:layout_constraintHorizontal_bias="0.246"
+        app:layout_constraintBottom_toTopOf="@+id/dbOutput"
+        app:layout_constraintEnd_toStartOf="@+id/avtorbook"
+        app:layout_constraintHorizontal_bias="0.353"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/avtorbook"
+        android:layout_width="75dp"
+        android:layout_height="17dp"
+        android:layout_marginEnd="40dp"
+        android:text="Автор"
+        app:layout_constraintBottom_toTopOf="@+id/dbOutput"
+        app:layout_constraintEnd_toStartOf="@+id/costbook"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/cost"
+        android:id="@+id/costbook"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="92dp"
+        android:layout_marginEnd="64dp"
         android:text="Цена"
-        app:layout_constraintBottom_toTopOf="@+id/viewOdegda"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/dbOutput"
+        app:layout_constraintEnd_toStartOf="@+id/janr"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/sexclother"
+        android:id="@+id/janr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="Пол"
-        app:layout_constraintBottom_toTopOf="@+id/viewOdegda"
+        android:layout_marginEnd="36dp"
+        android:text="Жанр"
+        app:layout_constraintBottom_toTopOf="@+id/dbOutput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.357" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/pageProfile"
@@ -67,7 +75,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewOdegda"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/dbOutput" />
+
+    <Button
+        android:id="@+id/buttonAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="Добавление"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dbOutput" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

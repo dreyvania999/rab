@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".AdminAddOdegda">
 
+
     <EditText
         android:id="@+id/nameadd"
         android:layout_width="wrap_content"
@@ -13,133 +14,78 @@
         android:ems="10"
         android:hint="name"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/addimage"
+        app:layout_constraintBottom_toTopOf="@+id/addposition"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.731"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.656" />
+        app:layout_constraintVertical_bias="0.191" />
 
     <EditText
-        android:id="@+id/costadd"
+        android:id="@+id/avtoradd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="cost"
+        android:hint="athor"
         android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/addposition"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.443"
-        app:layout_constraintStart_toEndOf="@+id/addcostodegda"
-        app:layout_constraintTop_toBottomOf="@+id/addimage"
-        app:layout_constraintVertical_bias="0.213" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameadd"
+        app:layout_constraintVertical_bias="0.189" />
 
     <Spinner
-        android:id="@+id/addsex"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-
+        android:id="@+id/janrsp"
+        android:layout_width="216dp"
+        android:layout_height="58dp"
         android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/addposition"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.443"
-        app:layout_constraintStart_toEndOf="@+id/addcostodegda"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/costadd" />
 
-
-    <TextView
-        android:id="@+id/addcostodegda"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:text="Стоимость"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addimageodegda"
-        app:layout_constraintVertical_bias="0.185" />
-
-    <TextView
-        android:id="@+id/addsexogegda"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Пол"
+    <EditText
+        android:id="@+id/costadd"
+        android:layout_width="216dp"
+        android:layout_height="55dp"
+        android:ems="10"
+        android:hint="cost"
         app:layout_constraintBottom_toTopOf="@+id/addposition"
-        app:layout_constraintEnd_toStartOf="@+id/addsex"
-        app:layout_constraintHorizontal_bias="0.264"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addcostodegda"
-        app:layout_constraintVertical_bias="0.571" />
+        app:layout_constraintTop_toBottomOf="@+id/avtoradd"
+        app:layout_constraintVertical_bias="0.278" />
 
     <Button
         android:id="@+id/addposition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="124dp"
         android:background="@drawable/style_button"
         android:text="Добавить позицию"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addcostodegda"
-        app:layout_constraintVertical_bias="0.489" />
-
-    <TextView
-        android:id="@+id/nameaddodegda"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="120dp"
-        android:text="Название"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
-    <TextView
-        android:id="@+id/addimageodegda"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="108dp"
-        android:text="Изображение"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameaddodegda"
-
-        />
-
-    <ImageView
-        android:id="@+id/addimage"
-        android:layout_width="102dp"
-        android:layout_height="98dp"
-        android:layout_marginTop="72dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.169"
-        app:layout_constraintStart_toEndOf="@+id/addimageodegda"
-        app:layout_constraintTop_toBottomOf="@+id/nameaddodegda" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/pageReg"
+        android:id="@+id/pagereg"
         android:layout_width="160dp"
         android:layout_height="55dp"
         android:background="@drawable/style_button"
         android:text="Регистрация пользователя"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.537"
-        app:layout_constraintStart_toEndOf="@+id/pageClother"
-        app:layout_constraintTop_toBottomOf="@+id/addposition"
-        app:layout_constraintVertical_bias="0.521" />
+        app:layout_constraintStart_toEndOf="@+id/pageclother"
+        app:layout_constraintTop_toBottomOf="@+id/addposition" />
 
     <Button
-        android:id="@+id/pageClother"
+        android:id="@+id/pageclother"
         android:layout_width="160dp"
         android:layout_height="55dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="16dp"
         android:background="@drawable/style_button"
-        android:text="Одежда"
+        android:text="Книги"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addposition"
-        app:layout_constraintVertical_bias="0.521" />
+        app:layout_constraintTop_toBottomOf="@+id/addposition" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
