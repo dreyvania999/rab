@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 public class jurnals extends AppCompatActivity implements View.OnClickListener {
 
-    Button pageProfile, buttonAdd, pagejurnal;
+    Button pageProfile, buttonAdd, pagebook;
     DBHelper DBHelper;
     SQLiteDatabase DB;
     ContentValues contentValues;
@@ -31,9 +31,9 @@ public class jurnals extends AppCompatActivity implements View.OnClickListener {
 
         pageProfile = findViewById(R.id.pageProfile);
         buttonAdd = findViewById(R.id.buttonAdd);
-        pagejurnal = findViewById(R.id.pagejurnal);
+        pagebook = findViewById(R.id.pagebook);
         pageProfile.setOnClickListener(this);
-        pagejurnal.setOnClickListener(this);
+        pagebook.setOnClickListener(this);
         buttonAdd.setOnClickListener(this);
 
         if (lis.l.equals("admin"))  {
@@ -178,7 +178,7 @@ public class jurnals extends AppCompatActivity implements View.OnClickListener {
                 Intent intent2 = new Intent(this, AdminAddBook.class);
                 startActivity(intent2);
                 break;
-            case R.id.pagejurnal:
+            case R.id.pagebook:
                 Intent intent3 = new Intent(this, Book.class);
                 startActivity(intent3);
                 break;
