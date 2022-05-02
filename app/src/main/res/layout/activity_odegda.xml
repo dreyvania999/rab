@@ -13,7 +13,7 @@
         app:layout_constraintBottom_toTopOf="@+id/pageProfile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/avtorbook">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TableRow
             android:layout_width="match_parent"
@@ -22,51 +22,16 @@
     </TableLayout>
 
 
-    <TextView
-        android:id="@+id/namebook"
+
+    <Button
+        android:id="@+id/pagejurnal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
-        android:text="Название"
-        app:layout_constraintBottom_toTopOf="@+id/dbOutput"
-        app:layout_constraintEnd_toStartOf="@+id/avtorbook"
-        app:layout_constraintHorizontal_bias="0.353"
+        android:layout_height="35dp"
+        android:text="Журналы"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/pageProfile"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/avtorbook"
-        android:layout_width="75dp"
-        android:layout_height="17dp"
-        android:layout_marginEnd="40dp"
-        android:text="Автор"
-        app:layout_constraintBottom_toTopOf="@+id/dbOutput"
-        app:layout_constraintEnd_toStartOf="@+id/costbook"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/costbook"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="64dp"
-        android:text="Цена"
-        app:layout_constraintBottom_toTopOf="@+id/dbOutput"
-        app:layout_constraintEnd_toStartOf="@+id/janr"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/janr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="36dp"
-        android:text="Жанр"
-        app:layout_constraintBottom_toTopOf="@+id/dbOutput"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
+        app:layout_constraintTop_toBottomOf="@+id/dbOutput" />
     <Button
         android:id="@+id/pageProfile"
         android:layout_width="wrap_content"
@@ -74,7 +39,7 @@
         android:text="Профиль"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/pagejurnal"
         app:layout_constraintTop_toBottomOf="@+id/dbOutput" />
 
     <Button
@@ -85,7 +50,7 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/pagejurnal"
         app:layout_constraintTop_toBottomOf="@+id/dbOutput" />
 
 

@@ -17,7 +17,6 @@ import android.widget.TextView;
 
 public class Odegda extends AppCompatActivity implements View.OnClickListener {
     Button pageProfile, buttonAdd;
-    TextView namebook, avtorbook, costbook, janr;
     DBHelper DBHelper;
     SQLiteDatabase DB;
     ContentValues contentValues;
@@ -28,10 +27,7 @@ public class Odegda extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_odegda);
 
-        namebook = findViewById(R.id.namebook);
-        avtorbook = findViewById(R.id.avtorbook);
-        costbook = findViewById(R.id.costbook);
-        janr = findViewById(R.id.janr);
+
         pageProfile = findViewById(R.id.pageProfile);
         buttonAdd = findViewById(R.id.buttonAdd);
         pageProfile.setOnClickListener(this);
@@ -64,7 +60,55 @@ public class Odegda extends AppCompatActivity implements View.OnClickListener {
             TableLayout dbOutput = findViewById(R.id.dbOutput);
             dbOutput.removeAllViews();
 
+            TableRow dbOutputRow1 = new TableRow(this);
+            dbOutputRow1.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
 
+            TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+
+            TextView id = new TextView(this);
+            layoutParams.weight = 1f;
+            id.setLayoutParams(layoutParams);
+            id.setText("Название");
+            dbOutputRow1.addView(id);
+
+            TextView namebook = new TextView(this);
+            layoutParams.weight = 3.0f;
+            namebook.setLayoutParams (layoutParams);
+            namebook.setText("Название");
+            dbOutputRow1.addView(namebook);
+
+            TextView avtorbook = new TextView(this);
+            layoutParams.weight = 3.0f;
+            avtorbook.setLayoutParams (layoutParams);
+            avtorbook.setText("Автор");
+            dbOutputRow1.addView(avtorbook);
+
+            TextView costbook = new TextView(this);
+            layoutParams.weight = 2.0f;
+            costbook.setLayoutParams(layoutParams);
+            costbook.setText("Цена");
+            dbOutputRow1.addView(costbook);
+
+            TextView janr = new TextView(this);
+            layoutParams.weight = 3.0f;
+            janr.setLayoutParams(layoutParams);
+            janr.setText("Жанр");
+            dbOutputRow1.addView(janr);
+
+
+            if (lis.l.equals("admin"))  {
+                Button delete = new Button(this);
+                delete.setOnClickListener(this);
+                layoutParams.weight = 1.0f;
+                delete.setLayoutParams(layoutParams);
+                delete.setText("del");
+                delete.setId(cursor.getInt(idIndex));
+                dbOutputRow1.addView(delete);
+
+            }
+
+            dbOutput.addView(dbOutputRow1);
             do {
                 TableRow dbOutputRow = new TableRow(this);
                 dbOutputRow.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
@@ -111,7 +155,7 @@ public class Odegda extends AppCompatActivity implements View.OnClickListener {
                     delete.setText("del");
                     delete.setId(cursor.getInt(idIndex));
                     dbOutputRow.addView(delete);
-                    delete.setVisibility(View.VISIBLE);
+
                 }
 
                 dbOutput.addView(dbOutputRow);
