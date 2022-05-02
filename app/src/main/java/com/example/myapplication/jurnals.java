@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 public class jurnals extends AppCompatActivity implements View.OnClickListener {
 
-    Button pageProfile, buttonAdd, pagebook, addposbook;
+    Button pageProfile, buttonAdd, pagebook;
     DBHelper DBHelper;
     SQLiteDatabase DB;
     ContentValues contentValues;
@@ -32,8 +32,6 @@ public class jurnals extends AppCompatActivity implements View.OnClickListener {
         pageProfile = findViewById(R.id.pageProfile);
         buttonAdd = findViewById(R.id.buttonAdd);
         pagebook = findViewById(R.id.pagebook);
-        addposbook = findViewById(R.id.addposbook);
-        addposbook.setOnClickListener(this);
         pageProfile.setOnClickListener(this);
         pagebook.setOnClickListener(this);
         buttonAdd.setOnClickListener(this);
@@ -56,11 +54,11 @@ public class jurnals extends AppCompatActivity implements View.OnClickListener {
         Cursor cursor = DB.query(DBHelper.Jurnal, null, null, null, null, null, null);
 
         if (cursor.moveToFirst()) {
-            int idIndex = cursor.getColumnIndex(DBHelper.KEY_ID);
-            int bookIndex = cursor.getColumnIndex(DBHelper.Namejur);
-            int athorIndex = cursor.getColumnIndex(DBHelper.Izdateljur);
-            int priseIndex = cursor.getColumnIndex(DBHelper.Prisejur);
-            int janrIndex = cursor.getColumnIndex(DBHelper.JanrJ);
+            int idInd = cursor.getColumnIndex(DBHelper.KEY_ID);
+            int jurIndex = cursor.getColumnIndex(DBHelper.Namejur);
+            int izdIndex = cursor.getColumnIndex(DBHelper.Izdateljur);
+            int priceIndex = cursor.getColumnIndex(DBHelper.Prisejur);
+            int jIndex = cursor.getColumnIndex(DBHelper.JanrJ);
             TableLayout dbOutput = findViewById(R.id.dbOutput);
             dbOutput.removeAllViews();
 
@@ -101,15 +99,13 @@ public class jurnals extends AppCompatActivity implements View.OnClickListener {
             dbOutputRow1.addView(janrj);
 
 
-            if (lis.l.equals("admin"))  {
-                Button delete = new Button(this);
-                delete.setOnClickListener(this);
-                layoutParams.weight = 1.0f;
-                delete.setLayoutParams(layoutParams);
-                delete.setText("del");
-                delete.setId(cursor.getInt(idIndex));
-                dbOutputRow1.addView(delete);
 
+            if (lis.l.equals("admin"))  {
+                TextView txt = new TextView(this);
+                layoutParams.weight = 3.0f;
+                txt.setLayoutParams(layoutParams);
+                txt.setText("           ");
+                dbOutputRow1.addView(txt);
             }
 
             dbOutput.addView(dbOutputRow1);
@@ -120,45 +116,45 @@ public class jurnals extends AppCompatActivity implements View.OnClickListener {
                 TableRow.LayoutParams params = new TableRow.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
 
-                TextView outputID = new TextView(this);
+                TextView outputId = new TextView(this);
                 params.weight = 1f;
-                outputID.setLayoutParams(params);
-                outputID.setText(cursor.getString(idIndex));
-                dbOutputRow.addView(outputID);
+                outputId.setLayoutParams(params);
+                outputId.setText(cursor.getString(idInd));
+                dbOutputRow.addView(outputId);
 
-                TextView outputBook = new TextView(this);
+                TextView outputJur = new TextView(this);
                 params.weight = 3.0f;
-                outputBook.setLayoutParams (params);
-                outputBook.setText(cursor.getString(bookIndex));
-                dbOutputRow.addView(outputBook);
+                outputJur.setLayoutParams (params);
+                outputJur.setText(cursor.getString(jurIndex));
+                dbOutputRow.addView(outputJur);
 
-                TextView outputAvtor = new TextView(this);
+                TextView outputIzd = new TextView(this);
                 params.weight = 3.0f;
-                outputAvtor.setLayoutParams (params);
-                outputAvtor.setText(cursor.getString(athorIndex));
-                dbOutputRow.addView(outputAvtor);
+                outputIzd.setLayoutParams (params);
+                outputIzd.setText(cursor.getString(izdIndex));
+                dbOutputRow.addView(outputIzd);
 
-                TextView outputPrice = new TextView(this);
+                TextView outputPrise = new TextView(this);
                 params.weight = 2.0f;
-                outputPrice.setLayoutParams(params);
-                outputPrice.setText(cursor.getString(priseIndex));
-                dbOutputRow.addView(outputPrice);
+                outputPrise.setLayoutParams(params);
+                outputPrise.setText(cursor.getString(priceIndex));
+                dbOutputRow.addView(outputPrise);
 
-                TextView outputJanr = new TextView(this);
+                TextView outputJJ = new TextView(this);
                 params.weight = 3.0f;
-                outputJanr.setLayoutParams(params);
-                outputJanr.setText(cursor.getString(janrIndex));
-                dbOutputRow.addView(outputJanr);
+                outputJJ.setLayoutParams(params);
+                outputJJ.setText(cursor.getString(jIndex));
+                dbOutputRow.addView(outputJJ);
 
 
                 if (lis.l.equals("admin"))  {
-                    Button delete = new Button(this);
-                    delete.setOnClickListener(this);
+                    Button delete1 = new Button(this);
+                    delete1.setOnClickListener(this);
                     params.weight = 1.0f;
-                    delete.setLayoutParams(params);
-                    delete.setText("del");
-                    delete.setId(cursor.getInt(idIndex));
-                    dbOutputRow.addView(delete);
+                    delete1.setLayoutParams(params);
+                    delete1.setText("del");
+                    delete1.setId(cursor.getInt(idInd));
+                    dbOutputRow.addView(delete1);
 
                 }
 
@@ -177,7 +173,7 @@ public class jurnals extends AppCompatActivity implements View.OnClickListener {
                 startActivity(intent1);
                 break;
             case R.id.buttonAdd:
-                Intent intent2 = new Intent(this, AdminAddBook.class);
+                Intent intent2 = new Intent(this, AdminAddJurnals.class);
                 startActivity(intent2);
                 break;
             case R.id.pagebook:
@@ -185,50 +181,43 @@ public class jurnals extends AppCompatActivity implements View.OnClickListener {
                 startActivity(intent3);
                 break;
 
-            case R.id.addposbook:
-                Intent intent4 = new Intent(this, Book.class);
-                startActivity(intent4);
-                break;
-
 
             default:
-                if (lis.l.equals("admin"))  {
+                if (lis.l.equals("admin")) {
                     View outputDBRow = (View) view.getParent();
                     ViewGroup outputDB = (ViewGroup) outputDBRow.getParent();
                     outputDB.removeView(outputDBRow);
                     outputDB.invalidate();
 
-                    DB.delete(DBHelper.Book, DBHelper.KEY_ID + " = ?", new String[]{String.valueOf((view.getId()))});
+                    DB.delete(DBHelper.Jurnal, DBHelper.KEY_ID + " = ?", new String[]{String.valueOf((view.getId()))});
 
                     contentValues = new ContentValues();
-                    Cursor cursorUpdater = DB.query(DBHelper.Book, null, null, null, null, null, null);
+                    Cursor cursorUpdater = DB.query(DBHelper.Jurnal, null, null, null, null, null, null);
                     if (cursorUpdater.moveToFirst()) {
-                        int idIndex = cursorUpdater.getColumnIndex(DBHelper.KEY_ID);
-                        int bookIndex = cursorUpdater.getColumnIndex(DBHelper.NameO);
-                        int athorIndex = cursorUpdater.getColumnIndex(DBHelper.Avtor);
-                        int priseIndex = cursorUpdater.getColumnIndex(DBHelper.Prise);
-                        int janrIndex = cursorUpdater.getColumnIndex(DBHelper.Janr);
+                        int idInd = cursorUpdater.getColumnIndex(DBHelper.KEY_ID);
+                        int jurIndex = cursorUpdater.getColumnIndex(DBHelper.Namejur);
+                        int izdIndex = cursorUpdater.getColumnIndex(DBHelper.Izdateljur);
+                        int priceIndex = cursorUpdater.getColumnIndex(DBHelper.Prisejur);
+                        int jIndex = cursorUpdater.getColumnIndex(DBHelper.JanrJ);
                         int realID = 1;
                         do {
-                            if (cursorUpdater.getInt(idIndex) > realID) {
+                            if (cursorUpdater.getInt(idInd) > realID) {
                                 contentValues.put(DBHelper.KEY_ID, realID);
-                                contentValues.put(DBHelper.NameO, cursorUpdater.getString(bookIndex));
-                                contentValues.put(DBHelper.Avtor, cursorUpdater.getString(athorIndex));
-                                contentValues.put(DBHelper.Prise, cursorUpdater.getString(priseIndex));
-                                contentValues.put(DBHelper.Janr, cursorUpdater.getString(janrIndex));
-                                DB.replace(DBHelper.Book, null, contentValues);
+                                contentValues.put(DBHelper.Namejur, cursorUpdater.getString(jurIndex));
+                                contentValues.put(DBHelper.Izdateljur, cursorUpdater.getString(izdIndex));
+                                contentValues.put(DBHelper.Prisejur, cursorUpdater.getString(priceIndex));
+                                contentValues.put(DBHelper.JanrJ, cursorUpdater.getString(jIndex));
+                                DB.replace(DBHelper.Jurnal, null, contentValues);
                             }
                             realID++;
                         } while (cursorUpdater.moveToNext());
                         if (cursorUpdater.moveToLast()) {
-                            DB.delete(DBHelper.Book, DBHelper.KEY_ID + " = ?", new String[]{cursorUpdater.getString(idIndex)});
+                            DB.delete(DBHelper.Jurnal, DBHelper.KEY_ID + " = ?", new String[]{cursorUpdater.getString(idInd)});
                         }
                         UpdateTable();
-                    }}
+                    }
 
-                break;
+                }    break;
         }
-
-
     }
 }

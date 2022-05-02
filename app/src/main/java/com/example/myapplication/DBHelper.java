@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
-    public static final int DBVersion =100000000;
+    public static final int DBVersion =100000001;
     public static final String DBName = "magazinebk";
     public static final String Name = "name";
     public static final String KEY_ID = "_id";
@@ -44,10 +44,10 @@ public class DBHelper extends SQLiteOpenHelper {
                 Address + " text," + Login + " text," + Password + " text" + ")");
 
         sqLiteDatabase.execSQL("create table " + Book + "(" + KEY_ID
-                + " integer primary key,"  + NameO + " text, " +  Avtor + " text, " + Prise + " text, "+  Janr + " text " + ")");
+                + " integer primary key,"  + NameO + " text, " +  Avtor + " text, " + Prise + " text,"+  Janr + " text " + ")");
 
         sqLiteDatabase.execSQL("create table " + Jurnal + "(" + KEY_ID
-                + " integer primary key,  " +  Namejur + " text, " +  Izdateljur + " text, " + Prisejur + " text, "+  JanrJ + " text " + ")");
+                + " integer primary key, " +  Namejur + " text," +  Izdateljur + " text," + Prisejur + " text,"+  JanrJ + " text " + ")");
 
     }
 

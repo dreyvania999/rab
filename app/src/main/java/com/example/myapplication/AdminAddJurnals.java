@@ -67,10 +67,10 @@ public class AdminAddJurnals extends AppCompatActivity implements AdapterView.On
                 String pub = publish.getText().toString();
                 String prise = cost.getText().toString();
 
-                contentValues.put(DBHelper.NameO, nam);
-                contentValues.put(DBHelper.Avtor, pub);
-                contentValues.put(DBHelper.Prise, prise);
-                contentValues.put(DBHelper.Janr, polc1);
+                contentValues.put(DBHelper.Namejur, nam);
+                contentValues.put(DBHelper.Izdateljur, pub);
+                contentValues.put(DBHelper.Prisejur, prise);
+                contentValues.put(DBHelper.JanrJ, polc1);
                 DB.insert(DBHelper.Jurnal, null, contentValues);
 
                 name.setText("");
@@ -79,7 +79,7 @@ public class AdminAddJurnals extends AppCompatActivity implements AdapterView.On
                 break;
 
             case R.id.pagejurnals:
-                Intent intent1 = new Intent(this, Book.class);
+                Intent intent1 = new Intent(this, jurnals.class);
                 startActivity(intent1);
                 break;
             case R.id.statistic:
@@ -88,7 +88,7 @@ public class AdminAddJurnals extends AppCompatActivity implements AdapterView.On
                 break;
 
             case R.id.addposbook:
-                Intent intent3 = new Intent(this, AdminAddJurnals.class);
+                Intent intent3 = new Intent(this, AdminAddBook.class);
                 startActivity(intent3);
                 break;
         }
@@ -104,8 +104,4 @@ public class AdminAddJurnals extends AppCompatActivity implements AdapterView.On
 
     }
 
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-        super.onPointerCaptureChanged(hasCapture);
-    }
 }

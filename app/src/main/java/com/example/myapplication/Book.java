@@ -16,7 +16,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 public class Book extends AppCompatActivity implements View.OnClickListener {
-    Button pageProfile, buttonAdd, pagejurnal, addposjur;
+    Button pageProfile, buttonAdd, pagejurnal;
     DBHelper DBHelper;
     SQLiteDatabase DB;
     ContentValues contentValues;
@@ -31,8 +31,6 @@ public class Book extends AppCompatActivity implements View.OnClickListener {
         pageProfile = findViewById(R.id.pageProfile);
         buttonAdd = findViewById(R.id.buttonAdd);
         pagejurnal = findViewById(R.id.pagejurnal);
-        addposjur = findViewById(R.id.addposjur);
-        addposjur.setOnClickListener(this);
         pageProfile.setOnClickListener(this);
         pagejurnal.setOnClickListener(this);
         buttonAdd.setOnClickListener(this);
@@ -102,14 +100,11 @@ public class Book extends AppCompatActivity implements View.OnClickListener {
 
 
             if (lis.l.equals("admin"))  {
-                Button delete = new Button(this);
-                delete.setOnClickListener(this);
-                layoutParams.weight = 1.0f;
-                delete.setLayoutParams(layoutParams);
-                delete.setText("del");
-                delete.setId(cursor.getInt(idIndex));
-                dbOutputRow1.addView(delete);
-
+                TextView txt = new TextView(this);
+                layoutParams.weight = 3.0f;
+                txt.setLayoutParams(layoutParams);
+                txt.setText("           ");
+                dbOutputRow1.addView(txt);
             }
 
             dbOutput.addView(dbOutputRow1);
@@ -176,19 +171,17 @@ public class Book extends AppCompatActivity implements View.OnClickListener {
                 Intent intent1 = new Intent(this, Profile.class);
                 startActivity(intent1);
                 break;
+
             case R.id.buttonAdd:
                 Intent intent2 = new Intent(this, AdminAddBook.class);
                 startActivity(intent2);
                 break;
+
             case R.id.pagejurnal:
                 Intent intent3 = new Intent(this, jurnals.class);
                 startActivity(intent3);
                 break;
 
-            case R.id.addposjur:
-                Intent intent4 = new Intent(this, Book.class);
-                startActivity(intent4);
-                break;
 
             default:
                 if (lis.l.equals("admin"))  {
