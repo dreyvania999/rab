@@ -113,17 +113,6 @@ public class Odegda extends AppCompatActivity implements View.OnClickListener {
                     dbOutputRow.addView(delete);
                     delete.setVisibility(View.VISIBLE);
                 }
-                else
-                {
-                    Button add = new Button(this);
-                    add.setOnClickListener(this);
-                    params.weight = 1.0f;
-                    add.setLayoutParams(params);
-                    add.setText("add");
-                    add.setId(cursor.getInt(idIndex));
-                    dbOutputRow.addView(add);
-                    add.setVisibility(View.VISIBLE);
-                }
 
                 dbOutput.addView(dbOutputRow);
 
@@ -178,28 +167,7 @@ public class Odegda extends AppCompatActivity implements View.OnClickListener {
                     }
                     UpdateTable();
                 }}
-                else {
-                    Cursor cursor = DB.query(DBHelper.Book, null, null, null, null, null, null);
 
-
-                    View outputDBRow = (View) view.getParent();
-                    ViewGroup outputDB = (ViewGroup) outputDBRow.getParent();
-                    outputDB.removeView(outputDBRow);
-                    outputDB.invalidate();
-
-                    contentValues = new ContentValues();
-
-                    String name = "curs())";
-                    String avtor = "ijhxn";
-                    String prise = "kjb";
-
-                    contentValues.put(DBHelper.NameK, name);
-                    contentValues.put(DBHelper.AvtorK, avtor);
-                    contentValues.put(DBHelper.PriseK, prise);
-                    DB.insert(DBHelper.Korzina, null, contentValues);
-
-
-                }
                 break;
         }
 
