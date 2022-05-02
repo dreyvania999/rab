@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 public class AdminAddJurnals extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
-    Button addposition, pagejurnals, statistic;
+    Button addposition, pagejurnals, statistic, addposbook;
     EditText publish, cost, name;
     Spinner janrsp;
     DBHelper DBHelper;
@@ -32,10 +32,12 @@ public class AdminAddJurnals extends AppCompatActivity implements AdapterView.On
         cost = findViewById(R.id.cost);
         publish = findViewById(R.id.publish);
         janrsp = findViewById(R.id.janrsp);
-        pagejurnals = findViewById(R.id.pageclother);
+        pagejurnals = findViewById(R.id.pagejurnals);
         addposition = findViewById(R.id.addposition);
         statistic = findViewById(R.id.statistic);
+        addposbook = findViewById(R.id.addposbook);
 
+        addposbook.setOnClickListener(this);
         addposition.setOnClickListener(this);
         pagejurnals.setOnClickListener(this);
         statistic.setOnClickListener(this);
@@ -83,6 +85,11 @@ public class AdminAddJurnals extends AppCompatActivity implements AdapterView.On
             case R.id.statistic:
                 Intent intent2 = new Intent(this, Jpos.class);
                 startActivity(intent2);
+                break;
+
+            case R.id.addposbook:
+                Intent intent3 = new Intent(this, AdminAddJurnals.class);
+                startActivity(intent3);
                 break;
         }
 

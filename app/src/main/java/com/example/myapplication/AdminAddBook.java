@@ -15,7 +15,7 @@ import android.widget.Spinner;
 
 public class AdminAddBook extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
-    Button addposition, pagebook, statistic;
+    Button addposition, pagebook, statistic, addposjur;
     EditText avtoradd, costadd, nameadd;
     Spinner janrsp;
     DBHelper DBHelper;
@@ -34,11 +34,13 @@ public class AdminAddBook extends AppCompatActivity implements View.OnClickListe
         avtoradd = findViewById(R.id.avtoradd);
         nameadd = findViewById(R.id.nameadd);
         janrsp = findViewById(R.id.janrsp);
-        pagebook = findViewById(R.id.pageclother);
+        addposjur = findViewById(R.id.addposjur);
+        pagebook = findViewById(R.id.pagebook);
         addposition = findViewById(R.id.addposition);
         statistic = findViewById(R.id.statistic);
 
         addposition.setOnClickListener(this);
+        addposjur.setOnClickListener(this);
         pagebook.setOnClickListener(this);
         statistic.setOnClickListener(this);
 
@@ -85,6 +87,11 @@ public class AdminAddBook extends AppCompatActivity implements View.OnClickListe
             case R.id.statistic:
                 Intent intent2 = new Intent(this, Jpos.class);
                 startActivity(intent2);
+                break;
+
+            case R.id.addposjur:
+                Intent intent3 = new Intent(this, AdminAddJurnals.class);
+                startActivity(intent3);
                 break;
         }
 
