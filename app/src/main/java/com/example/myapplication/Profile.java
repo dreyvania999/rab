@@ -17,16 +17,14 @@ import android.widget.TextView;
 public class Profile extends AppCompatActivity implements View.OnClickListener {
 
     Button editprof, exite, pageView;
-    TextView korzina, kolvo, username, usersurname;
+    TextView  username, usersurname;
     DBHelper DBHelper;
     SQLiteDatabase DB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
-        korzina = findViewById(R.id.korzina);
-        kolvo = findViewById(R.id.kolvo);
+        setContentView(R.layout.activity_profile);;
         username = findViewById(R.id.username);
         usersurname = findViewById(R.id.usersurname);
         editprof = findViewById(R.id.editprof);
@@ -39,67 +37,29 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         DBHelper = new DBHelper(this);
         DB = DBHelper.getWritableDatabase();
 
-        UpdateTable();
+        if (lis.l!=""){
+            Cursor cursorLog = DB.query(DBHelper.People, null, null, null, null, null, null);
+            if (cursorLog.moveToFirst()) {
+                int NameIndex = cursorLog.getColumnIndex(DBHelper.Name);
+                int SurnameIndex = cursorLog.getColumnIndex(DBHelper.Surname);
+                int loginIndex = cursorLog.getColumnIndex(DBHelper.Login);
+                do {
+                    if (lis.l.equals(cursorLog.getString(loginIndex))) {
+
+                        username.setText(cursorLog.getString(NameIndex));
+                        usersurname.setText(cursorLog.getString(SurnameIndex));
 
 
-    }
-    public void UpdateTable(){
-        Cursor cursor = DB.query(DBHelper.Korzina, null, null, null, null, null, null);
+                        break;
+                    }
 
-        if (cursor.moveToFirst()) {
-            int idIndex = cursor.getColumnIndex(DBHelper.KEY_ID);
-            int bookIndex = cursor.getColumnIndex(DBHelper.NameK);
-            int athorIndex = cursor.getColumnIndex(DBHelper.AvtorK);
-            int priseIndex = cursor.getColumnIndex(DBHelper.PriseK);
-            TableLayout dbOutput = findViewById(R.id.dbOutput);
-            dbOutput.removeAllViews();
+                } while (cursorLog.moveToNext());
+                cursorLog.close();
 
-
-            do {
-                TableRow tableLayoutRow = new TableRow(this);
-                tableLayoutRow.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-
-                TableRow.LayoutParams params = new TableRow.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-
-
-                TextView outputID = new TextView(this);
-                params.weight = 1f;
-                outputID.setLayoutParams(params);
-                outputID.setText(cursor.getString(idIndex));
-                tableLayoutRow.addView(outputID);
-
-                TextView outputBook = new TextView(this);
-                params.weight = 3.0f;
-                outputBook.setLayoutParams (params);
-                outputBook.setText(cursor.getString(bookIndex));
-                tableLayoutRow.addView(outputBook);
-
-                TextView outputAvtor = new TextView(this);
-                params.weight = 3.0f;
-                outputAvtor.setLayoutParams (params);
-                outputAvtor.setText(cursor.getString(athorIndex));
-                tableLayoutRow.addView(outputAvtor);
-
-                TextView outputPrice = new TextView(this);
-                params.weight = 2.0f;
-                outputPrice.setLayoutParams(params);
-                outputPrice.setText(cursor.getString(priseIndex));
-                tableLayoutRow.addView(outputPrice);
-
-//                Button delKorz = new Button(this);
-//                delKorz.setOnClickListener(this);
-//                params.weight = 1.0f;
-//                delKorz.setLayoutParams(params);
-//                delKorz.setText("-");
-//                delKorz.setId(cursor.getInt(idIndex));
-//                tableLayoutRow.addView(delKorz);
-
-                dbOutput.addView(tableLayoutRow);
-
-            } while (cursor.moveToNext());
+            }
         }
-        cursor.close();
     }
+
 
     @Override
     public void onClick(View view) {
