@@ -28,6 +28,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String Namejur = "jurnalname";
     public static final String Izdateljur = "jurnalizdat";
     public static final String Prisejur = "jurnalcost";
+    public static final String JanrJ = "janrjur";
 
 
 
@@ -46,7 +47,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 + " integer primary key,"  + NameO + " text, " +  Avtor + " text, " + Prise + " text, "+  Janr + " text " + ")");
 
         sqLiteDatabase.execSQL("create table " + Jurnal + "(" + KEY_ID
-                + " integer primary key,  " +  Namejur + " text, " +  Izdateljur + " text, " + Prisejur + " text " + ")");
+                + " integer primary key,  " +  Namejur + " text, " +  Izdateljur + " text, " + Prisejur + " text, "+  JanrJ + " text " + ")");
 
     }
 

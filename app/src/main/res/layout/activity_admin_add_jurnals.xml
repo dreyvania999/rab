@@ -6,4 +6,87 @@
     android:layout_height="match_parent"
     tools:context=".AdminAddJurnals">
 
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="name"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/addposition"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.191" />
+
+    <EditText
+        android:id="@+id/publish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="publishing house"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/addposition"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name"
+        app:layout_constraintVertical_bias="0.189" />
+
+    <Spinner
+        android:id="@+id/janrsp"
+        android:layout_width="216dp"
+        android:layout_height="58dp"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/addposition"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cost" />
+
+    <EditText
+        android:id="@+id/cost"
+        android:layout_width="216dp"
+        android:layout_height="55dp"
+        android:ems="10"
+        android:hint="cost"
+        app:layout_constraintBottom_toTopOf="@+id/addposition"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/publish"
+        app:layout_constraintVertical_bias="0.278" />
+
+    <Button
+        android:id="@+id/addposition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="140dp"
+        android:background="@drawable/style_button"
+        android:text="Добавить позицию"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/statistic"
+        android:layout_width="160dp"
+        android:layout_height="55dp"
+        android:background="@drawable/style_button"
+        android:text="Статистика"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/pagejurnals"
+        app:layout_constraintTop_toBottomOf="@+id/addposition" />
+
+    <Button
+        android:id="@+id/pagejurnals"
+        android:layout_width="160dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/style_button"
+        android:text="Журналы"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addposition" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

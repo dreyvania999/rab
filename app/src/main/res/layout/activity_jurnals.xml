@@ -5,5 +5,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".jurnals">
+    <TableLayout
+        android:id="@+id/dbOutput"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/pageProfile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </TableLayout>
+
+
+
+    <Button
+        android:id="@+id/pagejurnal"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="Книги"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/pageProfile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dbOutput" />
+    <Button
+        android:id="@+id/pageProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="Профиль"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/pagejurnal"
+        app:layout_constraintTop_toBottomOf="@+id/dbOutput" />
+
+    <Button
+        android:id="@+id/buttonAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="Добавление"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/pagejurnal"
+        app:layout_constraintTop_toBottomOf="@+id/dbOutput" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
