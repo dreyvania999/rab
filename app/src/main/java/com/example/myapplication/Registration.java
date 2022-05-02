@@ -19,7 +19,6 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
     Button ButtonLogin;
     EditText editPhone,editPassword,editLogin,editName,editSurname,editBirtday,editAddress;
     boolean bil=false;
-    private Object ContentValues;
     int index;
 
 
@@ -40,7 +39,7 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
         ButtonLogin.setOnClickListener(this);
 
 
-        if (lis.l!=""){
+        if (!lis.l.equals("")){
             Cursor cursorLog = database.query(DBHelper.People, null, null, null, null, null, null);
             if (cursorLog.moveToFirst()) {
                 int passwordIndex = cursorLog.getColumnIndex(DBHelper.Password);
@@ -80,7 +79,8 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(this, "Заполните все поля", Toast.LENGTH_LONG).show();
             return;
         }
-        if (bil==false) {
+
+        if (!bil) {
 
             Cursor signCursor1 = database.query(DBHelper.People, null, null, null, null, null, null);
 
@@ -113,22 +113,10 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
 
         }
         else {
-            boolean finded = false;
             Cursor signCursor2 = database.query(DBHelper.People, null, null, null, null, null, null);
 
-            if (editLogin.getText().toString()!=lis.l){
+            if (!editLogin.getText().toString().equals(lis.l)){
 
-            if(signCursor2.moveToFirst()){
-                int usernameIndex = signCursor2.getColumnIndex(DBHelper.Login);
-                do{
-                    if(editLogin.getText().toString().equals(signCursor2.getString(usernameIndex))){
-                        Toast.makeText(this, "Введённый логин уже зарегистрирован", Toast.LENGTH_LONG).show();
-                        finded = true;
-                        break;
-                    }
-                }while (signCursor2.moveToNext());
-            }}
-            if(!finded){
                 ContentValues contentValues = new ContentValues();
                 contentValues.put(DBHelper.Login, editLogin.getText().toString());
                 contentValues.put(DBHelper.Password, editPassword.getText().toString());

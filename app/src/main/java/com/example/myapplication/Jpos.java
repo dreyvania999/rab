@@ -97,10 +97,8 @@ public class Jpos extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btnBack:
-                startActivity(new Intent(this, AdminAddBook.class));
-                break;
+        if (v.getId() == R.id.btnBack) {
+            startActivity(new Intent(this, AdminAddBook.class));
         }
     }
 

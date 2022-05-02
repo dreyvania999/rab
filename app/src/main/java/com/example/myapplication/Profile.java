@@ -20,7 +20,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);;
+        setContentView(R.layout.activity_profile);
         username = findViewById(R.id.username);
         usersurname = findViewById(R.id.usersurname);
         editprof = findViewById(R.id.editprof);
@@ -33,7 +33,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         DBHelper = new DBHelper(this);
         DB = DBHelper.getWritableDatabase();
 
-        if (lis.l!=""){
+        if (!lis.l.equals("")){
             Cursor cursorLog = DB.query(DBHelper.People, null, null, null, null, null, null);
             if (cursorLog.moveToFirst()) {
                 int NameIndex = cursorLog.getColumnIndex(DBHelper.Name);
